@@ -1,0 +1,58 @@
+#topbar {
+  width: 100%;
+  height: $topbar_height;
+  background-color: $sub_color;
+}
+#modules {
+  position: fixed;
+  top: $modules_top;
+  left: $modules_left;
+  width: $modules_width;
+  height: $modules_height;
+  > .el-card__body {
+    padding: 5px;
+  }
+  .item {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 1px solid #dedede;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+  }
+}
+#view {
+  position: absolute;
+  top: $view_top;
+  left: $view_left;
+  width: $view_width;
+  height: $view_height;
+  border: 1px solid $main_border_color;
+  box-shadow: 0px 0px 20px $main_border_color;
+}
+#panel {
+  position: fixed;
+  top: 50%;
+  right: $panel_right;
+  width: $panel_width;
+  height: $panel_height;
+  margin-top: -($panel_height - $topbar_height) / 2;
+  margin-left: -$panel_width / 2;
+}
+
+.panel {
+  box-shadow: 0px 0px 20px $main_border_color;
+  > .el-card__header {
+    background-color: $sub_color;
+  }
+  .tt {
+    font-size: $pn_title_fs;
+    color: #fff;
+    > i {
+      float: right;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+}
