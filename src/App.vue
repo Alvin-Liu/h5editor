@@ -11,7 +11,10 @@
           v-for="(ctn, index) in pages"
           :key="index"
           :class="'page-' + index">
-          <container :id="ctn.id" />
+          <container 
+            :complists="ctn.comps"
+            :id="ctn.id" 
+          />
         </swiper-slide>
       </swiper>
     </div>
@@ -26,28 +29,9 @@ export default {
   name: 'app',
   data () {
     return {
-      iSlider: null,
-      pages: [{
-        id: 1,
-        style: {},
-        comps: []
-      }, {
-        id: 2,
-        style: {},
-        comps: []
-      }, {
-        id: 3,
-        style: {},
-        comps: []
-      }],
+      currentPage: 0,
       swiperOption: {
-        loop: true,
-        direction: 'vertical',
-        on: {
-          slideChangeTransitionEnd: function () {
-            console.log(this.activeIndex)  // 切换结束时，告诉我现在是第几个slide
-          }
-        }
+        direction: 'vertical'
       }
     }
   },
@@ -61,7 +45,16 @@ export default {
   computed: {
     swiper () {
       return this.$refs.mySwiper.swiper
+    },
+    pages () {
+      return this.$store.getters.pages
     }
+  },
+  mounted () {
+    const vm = this
+    this.swiper.on('slideChangeTransitionEnd', function () {
+      vm.$store.commit('SET_CUR_PAGE_INDEX', this.activeIndex)
+    })
   }
 }
 </script>

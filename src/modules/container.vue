@@ -12,6 +12,12 @@
 import vcomps from '@/components'
 export default {
   name: 'modules',
+  props: {
+    complists: {
+      type: Array,
+      required: true
+    }
+  },
   components: {
     vlist: {
       props: {
@@ -27,11 +33,6 @@ export default {
           this.$slots.default // 子组件中的阵列
         )
       }
-    }
-  },
-  computed: {
-    complists () {
-      return this.$store.getters.complists
     }
   }
 }

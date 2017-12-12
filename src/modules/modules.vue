@@ -15,7 +15,7 @@ export default {
   name: 'modules',
   methods: {
     addNewModule (name) {
-      this.$store.commit('ADD_TO_CTN', {
+      this.$store.commit('ADD_TO_PAGE', {
         name: name
       })
     }
