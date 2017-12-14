@@ -1,18 +1,31 @@
-#topbar {
-  width: 100%;
-  height: $topbar_height;
+body {
+  background-color: #d0cfd8;
+}
+.bg-main {
+  background-color: $main_color;
+}
+.bg-sub {
   background-color: $sub_color;
 }
-#modules {
-  position: fixed;
-  top: $modules_top;
-  left: $modules_left;
-  width: $modules_width;
-  height: $modules_height;
-  > .el-card__body {
-    padding: 5px;
-  }
+.bg-gray {
+  background-color: #f0f3f4;
+}
+
+.workspace {
+  width: $view_width;
+  height: $view_height;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.panel-header {
+  color: #fff;
+  line-height: 40px;
+}
+// 模板列表
+.tpl-lists {
+  height: 100%;
   .item {
+    float: left;
     width: 50px;
     height: 50px;
     margin: 5px;
@@ -22,23 +35,13 @@
     cursor: pointer;
   }
 }
-#view {
-  position: absolute;
-  top: $view_top;
-  left: $view_left;
-  width: $view_width;
-  height: $view_height;
-  border: 1px solid $main_border_color;
-  box-shadow: 0px 0px 20px $main_border_color;
+
+.page-lists {
+  height: 100%;
 }
+
 #panel {
-  position: fixed;
-  top: 50%;
-  right: $panel_right;
-  width: $panel_width;
-  height: $panel_height;
-  margin-top: -($panel_height - $topbar_height) / 2;
-  margin-left: -$panel_width / 2;
+  height: 100%;
 }
 
 .panel {

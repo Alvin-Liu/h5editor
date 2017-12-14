@@ -15,6 +15,7 @@
     "vue": "^2.5.2",
     "vue-fullpage": "^2.0.5",
     "vue-router": "^3.0.1",
+    "vuedraggable": "^2.15.0",
     "vuex": "^3.0.0"
   },
   "devDependencies": {

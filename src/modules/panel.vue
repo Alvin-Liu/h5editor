@@ -1,11 +1,10 @@
 <template>
-  <el-card id="panel" class="panel">
-    <div slot="header" class="tt">
-      <span>属性设置</span>
-      <i class="el-icon-close"></i>
-    </div>
-    <div class="ctn"></div>
-  </el-card>
+  <el-container class="page-lists">
+    <el-header height="40px" class="panel-header bg-sub">属性设置</el-header>
+    <el-main class="bg-gray f-cb">
+      
+    </el-main>
+  </el-container>
 </template>
 
 <script>

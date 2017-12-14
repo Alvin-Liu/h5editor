@@ -1,13 +1,10 @@
 <template>
-  <el-card id="modules" class="panel">
-    <div slot="header" class="tt">
-      <span>组件列表</span>
-      <i class="el-icon-close"></i>
-    </div>
-    <div class="ctn">
+  <el-container class="tpl-lists">
+    <el-header height="40px" class="panel-header bg-sub">组件列表</el-header>
+    <el-main class="bg-gray f-cb">
       <div class="item" @click="addNewModule('image')">图片</div>
-    </div>
-  </el-card>
+    </el-main>
+  </el-container>
 </template>
 
 <script>

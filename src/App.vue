@@ -1,27 +1,33 @@
 <template>
-  <div id="app">
-    <div id="topbar">
-      
-    </div>
-    <!-- 组件列表 -->
-    <module-lists />
-    <div id="view">
-      <swiper :options="swiperOption" ref="mySwiper" id="containers">
-        <swiper-slide 
-          v-for="(ctn, index) in pages"
-          :key="index"
-          :class="'page-' + index">
-          <container 
-            :complists="ctn.comps"
-            :id="ctn.id" 
-          />
-        </swiper-slide>
-      </swiper>
-    </div>
-    
-    <!-- 属性编辑面板 -->
-    <attr-panel />
-  </div>
+  <el-container>
+    <el-header class="bg-main" height="50px"></el-header>
+    <el-container>
+      <!-- 组件列表 -->
+      <el-aside>
+        <module-lists />
+      </el-aside>
+      <!-- 编辑视图面板 -->
+      <el-main>
+        <div id="workspace" class="workspace">
+          <swiper :options="swiperOption" ref="mySwiper" id="containers">
+            <swiper-slide 
+              v-for="(ctn, index) in pages"
+              :key="index"
+              :class="'page-' + index">
+              <container 
+                :complists="ctn.comps"
+                :id="ctn.id" 
+              />
+            </swiper-slide>
+          </swiper>
+        </div>
+      </el-main>
+      <!-- 属性编辑面板 -->
+      <el-aside>
+        <attr-panel />
+      </el-aside>
+    </el-container>
+  </el-container>
 </template>
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
