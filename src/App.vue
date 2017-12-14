@@ -1,7 +1,7 @@
 <template>
   <el-container>
-    <el-header class="bg-main" height="50px"></el-header>
-    <el-container>
+    <el-header class="bg-main" height="8vh"></el-header>
+    <el-container style="height: 92vh">
       <!-- 组件列表 -->
       <el-aside>
         <module-lists />
