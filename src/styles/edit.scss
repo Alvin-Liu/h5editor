@@ -10,6 +10,12 @@ body {
 .bg-gray {
   background-color: #f0f3f4;
 }
+.bg-white {
+  background-color: #fff;
+}
+.h-full {
+  height: 100%;
+}
 
 .workspace {
   width: $view_width;
@@ -37,7 +43,17 @@ body {
 }
 
 .page-lists {
-  height: 100%;
+  li {
+    padding: 15px;
+    border: 1px solid $main_border_color;
+    margin-bottom: 10px;
+    color: $font_color;
+    cursor: pointer;
+    &.active {
+      color: #fff;
+      background-color: #59c7f9;
+    }
+  }
 }
 
 #panel {

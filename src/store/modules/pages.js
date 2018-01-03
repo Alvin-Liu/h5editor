@@ -18,13 +18,15 @@ const state = {
       comps: []
     }
   ],
-  cur_page_idx: 0
+  curPageId: 1
 }
 
 // getters
 const getters = {
   pages: state => state.lists,
-  curPage: state => state.lists[state.cur_page_idx]
+  curPageId: state => state.curPageId,
+  curPage: state => state.lists
+    .find((itm) => itm.id === state.curPageId)
 }
 
 // actions
@@ -32,11 +34,16 @@ const actions = {}
 
 // mutations
 const mutations = {
+  [types.EDIT_COMP] (state, payload) {
+    console.log(payload)
+    Object.assign(payload.comp[payload.type], payload.value)
+  },
   [types.SET_CUR_PAGE_INDEX] (state, idx) {
-    state.cur_page_idx = idx
+    state.curPageId = idx
   },
   [types.ADD_TO_PAGE] (state, comp) {
-    let curPage = state.lists[state.cur_page_idx]
+    let curPage = state.lists
+      .find((itm) => itm.id === state.curPageId)
     curPage && curPage.comps.push(comp)
   }
 }

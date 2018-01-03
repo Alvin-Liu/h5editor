@@ -1,8 +1,16 @@
 <template>
-  <el-container class="page-lists">
+  <el-container class="h-full">
     <el-header height="40px" class="panel-header bg-sub">属性设置</el-header>
-    <el-main class="bg-gray f-cb">
-      
+    <el-main class="f-cb bg-white">
+      <ul class="page-lists">
+        <li
+          v-for="(itm, idx) in pages"
+          :keys="idx"
+          :class="{ 'active': curPageId == itm.id }"
+          @click="curPageId = itm.id">
+          <span>第{{ idx + 1 }}页</span>
+        </li>
+      </ul>
     </el-main>
   </el-container>
 </template>
@@ -10,9 +18,17 @@
 <script>
 export default {
   name: 'modules',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  computed: {
+    pages () {
+      return this.$store.getters.pages
+    },
+    curPageId: {
+      get () {
+        return this.$store.getters.curPageId
+      },
+      set (val) {
+        this.$store.commit('SET_CUR_PAGE_INDEX', val)
+      }
     }
   }
 }
