@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "element-ui": "^2.0.10",
     "vue": "^2.5.2",
     "vue-drr": "^1.0.2",
     "vue-fullpage": "^2.0.5",

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'image',
+  name: 'cImage',
   data () {
     return {
       imgUrl: 'static/images/logo.png'

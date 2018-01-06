@@ -32,47 +32,6 @@
 </template>
 
 <script>
-// 节流
-const throttle = (func, wait, options) => {
-  var timeout, context, args
-  var previous = 0
-  if (!options) options = {}
-
-  var later = function () {
-    previous = options.leading === false ? 0 : new Date().getTime()
-    timeout = null
-    func.apply(context, args)
-    if (!timeout) context = args = null
-  }
-
-  var throttled = function () {
-    var now = new Date().getTime()
-    if (!previous && options.leading === false) previous = now
-    var remaining = wait - (now - previous)
-    context = this
-    args = arguments
-    if (remaining <= 0 || remaining > wait) {
-      if (timeout) {
-        clearTimeout(timeout)
-        timeout = null
-      }
-      previous = now
-      func.apply(context, args)
-      if (!timeout) context = args = null
-    } else if (!timeout && options.trailing !== false) {
-      timeout = setTimeout(later, remaining)
-    }
-  }
-
-  throttled.cancel = function () {
-    clearTimeout(timeout)
-    previous = 0
-    timeout = null
-  }
-
-  return throttled
-}
-
 export default {
   replace: true,
   name: 'vue-drr',
@@ -247,21 +206,23 @@ export default {
         this.elmH = this.height
       }
 
-      this.$emit('resizing', this.left, this.top, this.width, this.height)
+      // this.$emit('resizing', this.left, this.top, this.width, this.height)
     },
     elmDown: function (e) {
       const target = e.target || e.srcElement
-
+      console.log(1)
       if (this.$el.contains(target)) {
+        console.log(2)
         this.reviewDimensions()
 
         if (!this.enabled) {
+          console.log(3)
           this.enabled = true
 
           this.$emit('activated')
           this.$emit('update:active', true)
         }
-
+        console.log(4)
         if (this.draggable) {
           this.dragging = true
         }
@@ -302,7 +263,7 @@ export default {
         y: (rect.bottom + rect.top) / 2
       }
     },
-    handleMove: throttle(function (e) {
+    handleMove: function (e) {
       const startX = this.lastMouseX
       const startY = this.lastMouseY
 
@@ -381,7 +342,7 @@ export default {
         this.rotateAngle += (endAngle - startAngle) * 180 / Math.PI
         this.$emit('rotating', this.rotateAngle)
       }
-    }, 30),
+    },
     handleUp: function (e) {
       this.handle = null
       if (this.resizing) {

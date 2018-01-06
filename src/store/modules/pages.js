@@ -1,5 +1,6 @@
 import * as types from '../types'
-
+import dComps from '@/components/data.js'
+import { deepClone } from '@/utils'
 const state = {
   lists: [
     {
@@ -18,7 +19,8 @@ const state = {
       comps: []
     }
   ],
-  curPageId: 1
+  curPageId: 1,
+  curCompData: {}
 }
 
 // getters
@@ -34,17 +36,21 @@ const actions = {}
 
 // mutations
 const mutations = {
-  [types.EDIT_COMP] (state, payload) {
-    console.log(payload)
-    Object.assign(payload.comp[payload.type], payload.value)
+  [types.SET_CUR_COMP] (state, compData) {
+    state.curCompData = compData
+  },
+  [types.EDIT_COMP] (state, { type, value }) {
+    let compData = state.curCompData
+    Object.assign(compData[type], value)
   },
   [types.SET_CUR_PAGE_INDEX] (state, idx) {
     state.curPageId = idx
   },
-  [types.ADD_TO_PAGE] (state, comp) {
+  [types.ADD_COMP] (state, comp) {
     let curPage = state.lists
       .find((itm) => itm.id === state.curPageId)
-    curPage && curPage.comps.push(comp)
+    const compData = dComps[comp.name]
+    curPage && compData && curPage.comps.push(deepClone(compData))
   }
 }
 

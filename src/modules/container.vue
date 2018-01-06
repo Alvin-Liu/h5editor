@@ -2,8 +2,13 @@
   <div class="container">
     <vue-drr
       v-for="(comp, index) in curpage.comps"
-      @activated="activated(comp)"
-      @deactivated="curcomp = null"
+      :w="comp.css.w"
+      :h="comp.css.h"
+      :y="comp.css.t"
+      :x="comp.css.l"
+      :angle="comp.css.rotate"
+      @activated="$store.commit('SET_CUR_COMP', comp)"
+      @deactivated="$store.commit('SET_CUR_COMP', {})"
       @dragging="handleDragging"
       @resizing="handleResizing"
       @rotating="handleRotating"
@@ -21,26 +26,15 @@ import vueDrr from './vue-drr'
 import vcomps from '@/components'
 export default {
   name: 'modules',
-  data () {
-    return {
-      curcomp: null
-    }
-  },
   computed: {
     curpage () {
       return this.$store.getters.curPage
     }
   },
   methods: {
-    activated (comp) {
-      console.log(comp)
-      this.curcomp = comp
-    },
     updateStyle (val) {
-      console.log(this.curcomp)
       this.$store.commit('EDIT_COMP', {
-        comp: this.curcomp,
-        type: 'style',
+        type: 'css',
         value: val
       })
     },

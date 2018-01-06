@@ -1,6 +1,7 @@
 export default {
   id: 1,
-  name: '图片',
+  title: '图片',
+  name: 'cImage',
   type: 1,
   anim: {
     type: 1,
@@ -10,7 +11,7 @@ export default {
   attr: {
     src: '/static/images/logo.png'
   },
-  style: {
+  css: {
     t: 0,
     l: 0,
     w: 200,

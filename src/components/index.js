@@ -1,5 +1,5 @@
-import image from './image'
+import cImage from './image'
 
 export default {
-  image
+  cImage
 }
