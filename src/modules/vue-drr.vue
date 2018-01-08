@@ -13,7 +13,6 @@
     }"
   >
     <slot></slot>
-    
     <div
       v-if="rotatable"
       class="z-rotateable-handle"
@@ -97,14 +96,6 @@ export default {
         return typeof val === 'number'
       }
     },
-    z: {
-      type: [ String, Number ],
-      default: 'auto',
-      validator: function (val) {
-        let valid = (typeof val === 'string') ? val === 'auto' : val >= 0
-        return valid
-      }
-    },
     handles: {
       type: Array,
       default: function () {
@@ -177,8 +168,7 @@ export default {
       dragging: false,
       rotating: false,
       enabled: this.active,
-      handle: null,
-      zIndex: this.z
+      handle: null
     }
   },
   methods: {
@@ -210,19 +200,15 @@ export default {
     },
     elmDown: function (e) {
       const target = e.target || e.srcElement
-      console.log(1)
       if (this.$el.contains(target)) {
-        console.log(2)
         this.reviewDimensions()
 
         if (!this.enabled) {
-          console.log(3)
           this.enabled = true
 
           this.$emit('activated')
           this.$emit('update:active', true)
         }
-        console.log(4)
         if (this.draggable) {
           this.dragging = true
         }
@@ -370,7 +356,6 @@ export default {
         left: this.left + 'px',
         width: this.width + 'px',
         height: this.height + 'px',
-        zIndex: this.zIndex,
         transform: 'rotate(' + this.rotateAngle + 'deg)'
       }
     }
@@ -378,11 +363,6 @@ export default {
   watch: {
     active: function (val) {
       this.enabled = val
-    },
-    z: function (val) {
-      if (val >= 0 || val === 'auto') {
-        this.zIndex = val
-      }
     }
   }
 }
@@ -415,7 +395,7 @@ export default {
     top: -$circle-size * 3;
     width: 1px;
     height: $circle-size * 3;
-    // margin-left: -.5px;
+    margin-left: -.5px;
     background-color: $main-color;
     cursor: url(../assets/mouserotate.png) 8 8, default;
     &:after {
@@ -527,5 +507,9 @@ export default {
       left: 50%;
       margin-left: -$circle-size/2;
     }
+  }
+
+  .z-active {
+    z-index: 999;
   }
 </style>

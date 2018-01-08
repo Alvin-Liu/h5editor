@@ -1,29 +1,26 @@
 import * as types from '../types'
 import dComps from '@/components/data.js'
 import { deepClone } from '@/utils'
+
+const defaulePageData = {
+  id: 1,
+  css: {},
+  props: {},
+  comps: []
+}
+
+const getDefaultPageData = (coverObj = {}) => {
+  let copy = deepClone(defaulePageData)
+  return Object.assign(copy, coverObj)
+}
+
 const state = {
-  lists: [
-    {
-      id: 1,
-      style: {},
-      comps: []
-    },
-    {
-      id: 2,
-      style: {},
-      comps: []
-    },
-    {
-      id: 3,
-      style: {},
-      comps: []
-    }
-  ],
+  lists: [getDefaultPageData()],
   curPageId: 1,
+  sum: 1,
   curCompData: {}
 }
 
-// getters
 const getters = {
   pages: state => state.lists,
   curPageId: state => state.curPageId,
@@ -31,10 +28,8 @@ const getters = {
     .find((itm) => itm.id === state.curPageId)
 }
 
-// actions
 const actions = {}
 
-// mutations
 const mutations = {
   [types.SET_CUR_COMP] (state, compData) {
     state.curCompData = compData
@@ -45,6 +40,14 @@ const mutations = {
   },
   [types.SET_CUR_PAGE_INDEX] (state, idx) {
     state.curPageId = idx
+  },
+  [types.ADD_PAGE] (state, payload = {}) {
+    state.sum += 1
+    const custom = {
+      ...payload,
+      id: state.sum
+    }
+    state.lists.push(getDefaultPageData(custom))
   },
   [types.ADD_COMP] (state, comp) {
     let curPage = state.lists

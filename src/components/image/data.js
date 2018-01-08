@@ -8,7 +8,7 @@ export default {
     duration: 1,
     delay: 0.4
   },
-  attr: {
+  props: {
     src: '/static/images/logo.png'
   },
   css: {

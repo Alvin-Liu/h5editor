@@ -8,7 +8,7 @@
       :x="comp.css.l"
       :angle="comp.css.rotate"
       @activated="$store.commit('SET_CUR_COMP', comp)"
-      @deactivated="$store.commit('SET_CUR_COMP', {})"
+      @deactivated="$store.commit('SET_CUR_COMP', null)"
       @dragging="handleDragging"
       @resizing="handleResizing"
       @rotating="handleRotating"

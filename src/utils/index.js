@@ -39,22 +39,22 @@ export const isPlainObject = (obj) => {
   return typeof Ctor === 'function' && hasOwn.toString.call(Ctor) === hasOwn.toString.call(Object)
 }
 
-export const extend = () => {
+export const extend = (...rest) => {
   let deep = false
   let name, options, src, copy, clone, copyIsArray
-  let length = arguments.length
+  let length = rest.length
   let i = 1
-  let target = arguments[0] || {}
+  let target = rest[0] || {}
   if (typeof target === 'boolean') {
     deep = target
-    target = arguments[i] || {}
+    target = rest[i] || {}
     i++
   }
   if (typeof target !== 'object' && !isFunction(target)) {
     target = {}
   }
   for (; i < length; i++) {
-    options = arguments[i]
+    options = rest[i]
     if (options != null) {
       for (name in options) {
         src = target[name]

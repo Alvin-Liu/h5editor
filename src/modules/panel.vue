@@ -11,6 +11,7 @@
           <span>第{{ idx + 1 }}页</span>
         </li>
       </ul>
+      <el-button type="primary" @click="$store.commit('ADD_PAGE')">新增页面</el-button>
     </el-main>
   </el-container>
 </template>
