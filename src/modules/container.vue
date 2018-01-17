@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import vueDrr from './vue-drr'
+import vueDrr from 'vue-drr'
 import vcomps from '@/components'
 export default {
   name: 'modules',

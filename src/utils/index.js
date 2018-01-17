@@ -79,3 +79,15 @@ export const extend = (...rest) => {
   }
   return target
 }
+
+export const local = {
+  set (key, value) {
+    localStorage.setItem(key, value)
+  },
+  get (key) {
+    localStorage.getItem(key)
+  },
+  remove (key) {
+    localStorage.removeItem(key)
+  }
+}

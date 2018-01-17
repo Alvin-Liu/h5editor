@@ -1,6 +1,8 @@
 <template>
   <el-container>
-    <el-header class="bg-main" height="8vh"></el-header>
+    <el-header class="bg-main" height="8vh">
+      <topbar />
+    </el-header>
     <el-container style="height: 92vh">
       <!-- 组件列表 -->
       <el-aside>
@@ -9,7 +11,9 @@
       <!-- 编辑视图面板 -->
       <el-main>
         <div id="workspace" class="workspace">
-          <container />
+          <div class="wrap">
+            <container />
+          </div>
         </div>
       </el-main>
       <!-- 属性编辑面板 -->
@@ -25,7 +29,11 @@ export default {
   components: {
     moduleLists: () => import('./modules/modules'),
     attrPanel: () => import('./modules/panel'),
+    topbar: () => import('./modules/topbar'),
     container: () => import('./modules/container')
+  },
+  beforeCreate () {
+    this.$store.dispatch('getUserData')
   }
 }
 </script>
