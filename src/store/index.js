@@ -26,7 +26,8 @@ export default new Vuex.Store({
       local.set('UserData', JSON.stringify({
         pages: {
           lists: state.pages.lists,
-          sum: state.pages.sum
+          page_sum: state.pages.page_sum,
+          comp_sum: state.pages.comp_sum
         }
       }))
     }

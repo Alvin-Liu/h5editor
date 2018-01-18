@@ -1,23 +1,29 @@
 <template>
   <div class="container">
-    <vue-drr
-      v-for="(comp, index) in curpage.comps"
-      :w="comp.css.w"
-      :h="comp.css.h"
-      :y="comp.css.t"
-      :x="comp.css.l"
-      :angle="comp.css.rotate"
-      @activated="$store.commit('SET_CUR_COMP', comp.id)"
-      @deactivated="$store.commit('SET_CUR_COMP', null)"
-      @dragging="handleDragging"
-      @resizing="handleResizing"
-      @rotating="handleRotating"
-      :key="index">
-      <vlist 
-        class="comp"
-        :name="comp.name">
-      </vlist>
-    </vue-drr>
+    <div class="comp-lists"
+      v-for="page in pages"
+      :key="page.id"
+      v-show="page.id === curpage.id">
+      <vue-drr
+        v-for="comp in page.comps"
+        :w="comp.css.w"
+        :h="comp.css.h"
+        :y="comp.css.t"
+        :x="comp.css.l"
+        :angle="comp.css.rotate"
+        @activated="handleActivated(comp.id)"
+        @deactivated="$store.commit('SET_CUR_COMP', null)"
+        @dragging="handleDragging"
+        @resizing="handleResizing"
+        @rotating="handleRotating"
+        :key="comp.id">
+        <vlist 
+          :compid="comp.id"
+          class="comp"
+          :name="comp.name">
+        </vlist>
+      </vue-drr>
+    </div>
   </div>
 </template>
 
@@ -27,11 +33,18 @@ import vcomps from '@/components'
 export default {
   name: 'modules',
   computed: {
+    pages () {
+      return this.$store.getters.pages
+    },
     curpage () {
       return this.$store.getters.curPage
     }
   },
   methods: {
+    handleActivated (id) {
+      console.log(id)
+      this.$store.commit('SET_CUR_COMP', id)
+    },
     updateStyle (val) {
       this.$store.commit('EDIT_COMP', {
         type: 'css',
