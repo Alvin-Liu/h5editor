@@ -12,9 +12,7 @@ export default {
   name: 'modules',
   methods: {
     addNewModule (name) {
-      this.$store.commit('ADD_COMP', {
-        name: name
-      })
+      this.$store.dispatch('addNewCompo', name)
     }
   }
 }

@@ -11,8 +11,8 @@
         :y="comp.css.t"
         :x="comp.css.l"
         :angle="comp.css.rotate"
-        @activated="handleActivated(comp.id)"
-        @deactivated="$store.commit('SET_CUR_COMP', null)"
+        @activated="toggleCompid(comp.id)"
+        @deactivated="toggleCompid(null)"
         @dragging="handleDragging"
         @resizing="handleResizing"
         @rotating="handleRotating"
@@ -41,9 +41,8 @@ export default {
     }
   },
   methods: {
-    handleActivated (id) {
-      console.log(id)
-      this.$store.commit('SET_CUR_COMP', id)
+    toggleCompid (id) {
+      this.$store.commit('TOGGLE_COMP', id)
     },
     updateStyle (val) {
       this.$store.commit('EDIT_COMP', {

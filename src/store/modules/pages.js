@@ -1,43 +1,46 @@
 import * as types from '../types'
 import dComps from '@/components/data.js'
+import { getNewComp, getNewPage } from '@/api/actions'
 import { deepClone } from '@/utils'
 
-const defaulePageData = {
-  id: 1,
-  css: {},
-  props: {},
-  comps: []
-}
-
-const getDefaultPageData = (coverObj = {}) => {
-  let copy = deepClone(defaulePageData)
-  return Object.assign(copy, coverObj)
-}
-
-const getDefaultCompData = ({ name, coverObj = {} }) => {
-  const compData = dComps[name]
-  return Object.assign(deepClone(compData), coverObj)
-}
-
 const state = {
-  lists: [getDefaultPageData()],
-  curPageId: 1,
-  page_sum: 1,
-  comp_sum: 0,
+  lists: [],
+  curPageId: null,
   curCompId: null
 }
 
 const getters = {
   pages: state => state.lists,
-  curPageId: state => state.curPageId,
+  curPageId: state => state.curPageId || state.lists[0]['id'],
   curPage: state => state.lists
-    .find((itm) => itm.id === state.curPageId)
+    .find((itm) => itm.id === state.curPageId) || state.lists[0]
 }
 
-const actions = {}
+const actions = {
+  initH5Editor ({ dispatch, commit }) {
+    dispatch('addNewPage')
+      .then((id) => {
+        commit('TOGGLE_PAGE', id)
+      })
+  },
+  addNewPage ({ commit }) {
+    return getNewPage()
+      .then((page) => {
+        commit('ADD_PAGE', page)
+        return page.id
+      })
+  },
+  addNewCompo ({ commit }, name) {
+    getNewComp()
+      .then((compo) => {
+        const compData = dComps[name]
+        commit('ADD_COMP', Object.assign(deepClone(compData), compo))
+      })
+  }
+}
 
 const mutations = {
-  [types.SET_CUR_COMP] (state, id) {
+  [types.TOGGLE_COMP] (state, id) {
     state.curCompId = id
   },
   [types.EDIT_COMP] (state, { type, value }) {
@@ -49,27 +52,15 @@ const mutations = {
       }
     }
   },
-  [types.SET_CUR_PAGE_INDEX] (state, idx) {
-    state.curPageId = idx
+  [types.TOGGLE_PAGE] (state, pageId) {
+    state.curPageId = pageId
   },
-  [types.ADD_PAGE] (state, payload = {}) {
-    state.page_sum += 1
-    const custom = {
-      ...payload,
-      id: state.page_sum
-    }
-    state.lists.push(getDefaultPageData(custom))
+  [types.ADD_PAGE] (state, pageData) {
+    pageData && state.lists.push(pageData)
   },
-  [types.ADD_COMP] (state, comp) {
+  [types.ADD_COMP] (state, compData) {
     let curPage = state.lists
       .find((itm) => itm.id === state.curPageId)
-    state.comp_sum += 1
-    const compData = getDefaultCompData({
-      name: comp.name,
-      coverObj: {
-        id: state.comp_sum
-      }
-    })
     curPage && compData && curPage.comps.push(compData)
   }
 }

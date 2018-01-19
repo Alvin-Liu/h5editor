@@ -11,7 +11,7 @@
           <span>第{{ idx + 1 }}页</span>
         </li>
       </ul>
-      <el-button type="primary" @click="$store.commit('ADD_PAGE')">新增页面</el-button>
+      <el-button type="primary" @click="$store.dispatch('addNewPage')">新增页面</el-button>
     </el-main>
   </el-container>
 </template>
@@ -28,7 +28,7 @@ export default {
         return this.$store.getters.curPageId
       },
       set (val) {
-        this.$store.commit('SET_CUR_PAGE_INDEX', val)
+        this.$store.commit('TOGGLE_PAGE', val)
       }
     }
   }

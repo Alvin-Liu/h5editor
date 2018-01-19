@@ -11,7 +11,7 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   actions: {
-    getUserData ({ commit }) {
+    getUserData ({ commit, dispatch }) {
       const userData = localStorage.getItem('UserData')
       if (userData) {
         try {
@@ -20,14 +20,14 @@ export default new Vuex.Store({
         } catch (e) {
           console.error('获取数据失败:' + e.message)
         }
+      } else {
+        dispatch('initH5Editor')
       }
     },
     saveUserData ({ state }) {
       local.set('UserData', JSON.stringify({
         pages: {
-          lists: state.pages.lists,
-          page_sum: state.pages.page_sum,
-          comp_sum: state.pages.comp_sum
+          lists: state.pages.lists
         }
       }))
     }
