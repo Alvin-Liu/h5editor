@@ -16,8 +16,13 @@ export default new Vuex.Store({
       if (userData) {
         try {
           const curUserData = JSON.parse(userData)
+          const pages = curUserData.pages
           commit('INIT_USER_DATA', curUserData)
+          if (pages && pages.lists && pages.lists.length) {
+            commit('TOGGLE_PAGE', pages.lists[0]['id'])
+          }
         } catch (e) {
+          dispatch('initH5Editor')
           console.error('获取数据失败:' + e.message)
         }
       } else {

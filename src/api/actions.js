@@ -10,7 +10,7 @@ export const getNewComp = () => {
 
 export const getNewPage = () => {
   return request({
-    id: getRandomId(16),
+    id: getRandomId(32),
     css: {},
     props: {},
     comps: []

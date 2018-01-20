@@ -3,7 +3,7 @@
     <div class="comp-lists"
       v-for="page in pages"
       :key="page.id"
-      v-show="page.id === curpage.id">
+      v-show="page.id === curPageId">
       <vue-drr
         v-for="comp in page.comps"
         :w="comp.css.w"
@@ -36,8 +36,8 @@ export default {
     pages () {
       return this.$store.getters.pages
     },
-    curpage () {
-      return this.$store.getters.curPage
+    curPageId () {
+      return this.$store.getters.curPageId
     }
   },
   methods: {
