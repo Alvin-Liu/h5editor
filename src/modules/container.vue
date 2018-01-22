@@ -5,12 +5,13 @@
       :key="page.id"
       v-show="page.id === curPageId">
       <vue-drr
-        v-for="comp in page.comps"
+        v-for="comp in complists"
         :w="comp.css.w"
         :h="comp.css.h"
         :y="comp.css.t"
         :x="comp.css.l"
         :angle="comp.css.rotate"
+        @dbclick="openDialog(comp)"
         @activated="toggleCompid(comp.id)"
         @deactivated="toggleCompid(null)"
         @dragging="handleDragging"
@@ -38,11 +39,17 @@ export default {
     },
     curPageId () {
       return this.$store.getters.curPageId
+    },
+    complists () {
+      return this.$store.getters.getComplistsByPageId(this.curPageId)
     }
   },
   methods: {
     toggleCompid (id) {
       this.$store.commit('TOGGLE_COMP', id)
+    },
+    openDialog (comp) {
+      console.log(comp)
     },
     updateStyle (val) {
       this.$store.commit('EDIT_COMP', {
