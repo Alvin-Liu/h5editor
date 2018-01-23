@@ -11,7 +11,6 @@
         :y="comp.css.t"
         :x="comp.css.l"
         :angle="comp.css.rotate"
-        @dbclick="openDialog(comp)"
         @activated="toggleCompid(comp.id)"
         @deactivated="toggleCompid(null)"
         @dragging="handleDragging"
@@ -19,6 +18,8 @@
         @rotating="handleRotating"
         :key="comp.id">
         <vlist 
+          @click="handleClick(comp)"
+          @dblclick="handleDblclick"
           :compid="comp.id"
           class="comp"
           :name="comp.name">
@@ -45,11 +46,14 @@ export default {
     }
   },
   methods: {
+    handleClick (name) {
+      console.log('click')
+    },
+    handleDblclick (name) {
+      console.log('dblclick')
+    },
     toggleCompid (id) {
       this.$store.commit('TOGGLE_COMP', id)
-    },
-    openDialog (comp) {
-      console.log(comp)
     },
     updateStyle (val) {
       this.$store.commit('EDIT_COMP', {
@@ -86,12 +90,22 @@ export default {
           required: true
         }
       },
-      render (createElement) {
+      render (h) {
         const module = vcomps[this.name]
-        return createElement(
-          module,
-          this.$slots.default // 子组件中的阵列
-        )
+        return h(module, {
+          nativeOn: {
+            click: this.clickHandler,
+            dblclick: this.dblclickHandler
+          }
+        })
+      },
+      methods: {
+        clickHandler () {
+          this.$emit('click', this.name)
+        },
+        dblclickHandler () {
+          this.$emit('dblclick', this.name)
+        }
       }
     }
   }
