@@ -46,8 +46,11 @@ export default {
     }
   },
   methods: {
-    handleClick (name) {
-      console.log('click')
+    handleClick (comp) {
+      this.$store.commit('OPEN_PROPS_PAANEL', {
+        name: comp.name,
+        id: comp.id
+      })
     },
     handleDblclick (name) {
       console.log('dblclick')

@@ -13,7 +13,15 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state: {
-    versior: 0.1
+    versior: 0.1,
+    propsPanel: {
+      status: false,
+      name: '',
+      id: ''
+    }
+  },
+  getters: {
+    propsPanel: (state) => state.propsPanel
   },
   actions: {
     getUserData ({ commit, dispatch }) {
@@ -55,6 +63,16 @@ export default new Vuex.Store({
       state.versior = userData.versior
       state.pages.lists = userData.pages.lists
       state.components.lists = userData.components.lists
+    },
+    [types.OPEN_PROPS_PAANEL] (state, { id, name }) {
+      state.propsPanel = {
+        status: true,
+        name: name,
+        id: id
+      }
+    },
+    [types.CLOSE_PROPS_PAANEL] (state) {
+      state.propsPanel.status = false
     }
   },
   modules: {

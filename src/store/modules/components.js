@@ -11,6 +11,9 @@ const state = {
 const getters = {
   getComplistsByPageId: (state) => (pageId) => {
     return state.lists.filter((cp) => cp.parentId === pageId)
+  },
+  curComp: (state) => {
+    return state.lists.find((cp) => cp.id === state.curCompId)
   }
 }
 

@@ -16,10 +16,11 @@
           </div>
         </div>
       </el-main>
-      <!-- 属性编辑面板 -->
       <el-aside>
-        <attr-panel />
+        <page-panel />
       </el-aside>
+      <!-- 属性编辑面板 -->
+      <props-panel />
     </el-container>
   </el-container>
 </template>
@@ -28,9 +29,10 @@ export default {
   name: 'app',
   components: {
     moduleLists: () => import('./modules/modules'),
-    attrPanel: () => import('./modules/panel'),
+    pagePanel: () => import('./modules/panel'),
     topbar: () => import('./modules/topbar'),
-    container: () => import('./modules/container')
+    container: () => import('./modules/container'),
+    propsPanel: () => import('./modules/props')
   },
   beforeCreate () {
     this.$store.dispatch('getUserData')
