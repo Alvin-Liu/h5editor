@@ -2,7 +2,7 @@
   <div class="props-panel" v-show="propsPanel.status">
     <div class="props-title">
       设置面板
-      <i class="el-icon-error" @click="$store.commit('CLOSE_PROPS_PAANEL')"></i>
+      <i class="f-fr el-icon-close props-close" @click="$store.commit('CLOSE_PROPS_PAANEL')"></i>
     </div>
     <div class="props-body">
       <keep-alive>
@@ -38,6 +38,13 @@ export default {
     top: 60px;
     left: 100px;
     width: 300px;
+    .props-close {
+      color: #ddd;
+      cursor: pointer;
+      &:hover {
+        color: #fff;
+      }
+    }
     .props-title {
       padding: 10px;
       font-size: 14px;
@@ -45,6 +52,7 @@ export default {
       color: #fff;
     }
     .props-body {
+      min-height: 70vh;
       padding: 10px;
       background-color: #fff;
     }
