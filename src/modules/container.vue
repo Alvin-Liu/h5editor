@@ -5,7 +5,7 @@
       :key="page.id"
       v-show="page.id === curPageId">
       <vue-drr
-        v-for="comp in complists"
+        v-for="comp in page.comps"
         :w="comp.css.w"
         :h="comp.css.h"
         :y="comp.css.t"
@@ -40,9 +40,6 @@ export default {
     },
     curPageId () {
       return this.$store.getters.curPageId
-    },
-    complists () {
-      return this.$store.getters.getComplistsByPageId(this.curPageId)
     }
   },
   methods: {

@@ -24,6 +24,7 @@ const actions = {
         const compData = dComps[name]
         if (compData) {
           const newCompData = Object.assign(deepClone(compData), comp, { parentId: getters.curPageId })
+          commit('ADD_COMP_TO_PAGES', newCompData)
           commit('ADD_COMP', newCompData)
         }
       })

@@ -37,6 +37,12 @@ const mutations = {
   },
   [types.ADD_PAGE] (state, pageData) {
     state.lists.push(pageData)
+  },
+  [types.ADD_COMP_TO_PAGES] (state, compData) {
+    const curPage = state.lists.find((page) => page.id === state.curPageId)
+    if (curPage) {
+      curPage.comps.push(pageData)
+    }
   }
 }
 
