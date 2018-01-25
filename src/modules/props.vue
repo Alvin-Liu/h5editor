@@ -6,7 +6,10 @@
     </div>
     <div class="props-body">
       <keep-alive>
-        <component :is="currentView"></component>
+        <component 
+          :is="propsPanel.name"
+          :compid="propsPanel.id">
+        </component>
       </keep-alive>
     </div>
   </div>
@@ -16,11 +19,6 @@
 import compConfigs from '@/components/config.js'
 export default {
   name: 'props',
-  data () {
-    return {
-      currentView: 'cImage'
-    }
-  },
   computed: {
     propsPanel () {
       return this.$store.getters.propsPanel

@@ -14,6 +14,9 @@ const getters = {
   },
   curComp: (state) => {
     return state.lists.find((cp) => cp.id === state.curCompId)
+  },
+  getCompConfigByCompid: (state) => (compid) => {
+    return state.lists.find((cp) => cp.id === compid)
   }
 }
 
