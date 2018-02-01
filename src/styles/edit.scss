@@ -16,6 +16,16 @@ body {
 .h-full {
   height: 100%;
 }
+.h-from {
+  .item {
+    margin: 5px;
+  }
+}
+.h-input {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  line-height: 1; 
+}
 
 .workspace {
   position: relative;

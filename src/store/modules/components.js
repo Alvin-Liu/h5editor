@@ -38,8 +38,8 @@ const mutations = {
   [types.TOGGLE_COMP] (state, id) {
     state.curCompId = id
   },
-  [types.EDIT_COMP] (state, { type, value }) {
-    const comp = state.lists.find((cp) => cp.id === state.curCompId)
+  [types.EDIT_COMP] (state, { type, value, compid }) {
+    const comp = state.lists.find((cp) => cp.id === state.curCompId || compid)
     if (comp) {
       Object.assign(comp[type], value)
     }

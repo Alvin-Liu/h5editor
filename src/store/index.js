@@ -13,7 +13,7 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state: {
-    versior: 0.1,
+    versior: 0.2,
     propsPanel: {
       status: false,
       name: '',
@@ -24,12 +24,12 @@ export default new Vuex.Store({
     propsPanel: (state) => state.propsPanel
   },
   actions: {
-    getUserData ({ commit, dispatch }) {
+    getUserData ({ state, commit, dispatch }) {
       const userData = localStorage.getItem('UserData')
       if (userData) {
         try {
           const curUserData = JSON.parse(userData)
-          if (curUserData.versior && curUserData.versior >= 0.1) {
+          if (curUserData.versior && (curUserData.versior >= state.versior)) {
             const pages = curUserData.pages
             commit('INIT_USER_DATA', curUserData)
             if (pages && pages.lists && pages.lists.length) {
@@ -51,9 +51,6 @@ export default new Vuex.Store({
         versior: state.versior,
         pages: {
           lists: state.pages.lists
-        },
-        components: {
-          lists: state.components.lists
         }
       }))
     }
@@ -62,7 +59,11 @@ export default new Vuex.Store({
     [types.INIT_USER_DATA] (state, userData) {
       state.versior = userData.versior
       state.pages.lists = userData.pages.lists
-      state.components.lists = userData.components.lists
+      state.components.lists = userData.pages.lists.reduce((lists, page) => {
+        if (page) {
+          return lists.concat(page.comps)
+        }
+      }, [])
     },
     [types.OPEN_PROPS_PAANEL] (state, { id, name }) {
       state.propsPanel = {
