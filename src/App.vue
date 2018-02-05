@@ -6,7 +6,6 @@
     <el-container style="height: 92vh">
       <!-- 组件列表 -->
       <el-aside>
-        <module-lists />
       </el-aside>
       <!-- 编辑视图面板 -->
       <el-main>
@@ -28,7 +27,6 @@
 export default {
   name: 'app',
   components: {
-    moduleLists: () => import('./modules/modules'),
     pagePanel: () => import('./modules/panel'),
     topbar: () => import('./modules/topbar'),
     container: () => import('./modules/container'),

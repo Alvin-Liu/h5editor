@@ -33,8 +33,8 @@ export default {
 <style lang="scss">
   .props-panel {
     position: absolute;
-    top: 60px;
-    left: 100px;
+    top: 70px;
+    left: 10px;
     width: 300px;
     .props-close {
       color: #ddd;

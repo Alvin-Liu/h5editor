@@ -1,5 +1,6 @@
 <template>
   <div class="header-ctn">
+    <module-lists />
     <div class="actions">
       <el-button type="primary" @click="$store.dispatch('saveUserData')">保存</el-button>
     </div>
@@ -21,6 +22,9 @@ export default {
         this.$store.commit('SET_CUR_PAGE_INDEX', val)
       }
     }
+  },
+  components: {
+    moduleLists: () => import('./modules')
   }
 }
 </script>
