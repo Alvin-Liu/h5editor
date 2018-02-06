@@ -1,10 +1,9 @@
 <template>
   <el-container>
-    <el-header class="bg-main" height="8vh">
+    <el-header class="bg-main g-hd" height="8vh">
       <topbar />
     </el-header>
     <el-container style="height: 92vh">
-      <!-- 组件列表 -->
       <el-aside>
       </el-aside>
       <!-- 编辑视图面板 -->

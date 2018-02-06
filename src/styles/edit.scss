@@ -1,31 +1,4 @@
-body {
-  background-color: #d0cfd8;
-}
-.bg-main {
-  background-color: $main_color;
-}
-.bg-sub {
-  background-color: $sub_color;
-}
-.bg-gray {
-  background-color: #f0f3f4;
-}
-.bg-white {
-  background-color: #fff;
-}
-.h-full {
-  height: 100%;
-}
-.h-from {
-  .item {
-    margin: 5px;
-  }
-}
-.h-input {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  line-height: 1; 
-}
+@import "./modules/props.scss";
 
 .workspace {
   position: relative;
@@ -48,21 +21,6 @@ body {
 .panel-header {
   color: #fff;
   line-height: 40px;
-}
-// 模板列表
-.tpl-lists {
-  float: left;
-  width: 600px;
-  height: 100%;
-  margin: 10px auto;
-  .item {
-    float: left;
-    padding: 10px 30px;
-    border: 1px solid #dedede;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-  }
 }
 
 .page-lists {
@@ -96,13 +54,5 @@ body {
       font-size: 22px;
       cursor: pointer;
     }
-  }
-}
-// 顶部工具栏
-.header-ctn {
-  overflow: hidden;
-  > .actions {
-    float: right;
-    margin-top: 10px;
   }
 }

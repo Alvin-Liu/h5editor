@@ -17,6 +17,7 @@ export default {
     w: 200,
     h: 200,
     rotate: 0,
+    bgc: '#fff',
     bd: {
       w: 1,
       t: 1,

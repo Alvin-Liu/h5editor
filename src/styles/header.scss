@@ -1,0 +1,28 @@
+.g-hd {
+  > .g-wrap {
+    margin-top: 1vh;
+  }
+  .logo {
+    line-height: 50px;
+    font-size: 24px;
+    color: #fff;
+  }
+  @include grail-layout(200px, 200px)
+  .actions {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+// 模板列表
+.m-comps {
+  margin-top: 10px;
+  text-align: center;
+  .itm {
+    display: inline-block;
+    padding: 10px 30px;
+    border: 1px solid #dedede;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+  }
+}

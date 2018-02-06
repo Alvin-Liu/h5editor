@@ -1,8 +1,15 @@
 <template>
-  <div class="header-ctn">
-    <module-lists />
-    <div class="actions">
-      <el-button type="primary" @click="$store.dispatch('saveUserData')">保存</el-button>
+  <div class="g-wrap">
+    <div class="g-mn">
+      <module-lists />
+    </div>
+    <div class="g-sd fl">
+      <a href="/" class="logo">H5EDITOR</a>
+    </div>
+    <div class="g-sd fr">
+      <div class="actions">
+        <el-button type="primary" @click="$store.dispatch('saveUserData')">保存</el-button>
+      </div>
     </div>
   </div>
 </template>

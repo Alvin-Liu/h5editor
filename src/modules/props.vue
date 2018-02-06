@@ -30,29 +30,3 @@ export default {
   components: compConfigs
 }
 </script>
-<style lang="scss">
-  .props-panel {
-    position: absolute;
-    top: 70px;
-    left: 10px;
-    width: 300px;
-    .props-close {
-      color: #ddd;
-      cursor: pointer;
-      &:hover {
-        color: #fff;
-      }
-    }
-    .props-title {
-      padding: 10px;
-      font-size: 14px;
-      background-color: #000;
-      color: #fff;
-    }
-    .props-body {
-      min-height: 70vh;
-      padding: 10px;
-      background-color: #fff;
-    }
-  }
-</style>

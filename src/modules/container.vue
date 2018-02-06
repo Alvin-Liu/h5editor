@@ -88,11 +88,18 @@ export default {
         name: {
           type: String,
           required: true
+        },
+        compid: {
+          type: [String, Number],
+          required: true
         }
       },
       render (h) {
         const module = vcomps[this.name]
         return h(module, {
+          props: {
+            compid: this.compid
+          },
           nativeOn: {
             click: this.clickHandler,
             dblclick: this.dblclickHandler

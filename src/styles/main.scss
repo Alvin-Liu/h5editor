@@ -1,0 +1,33 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #d0cfd8;
+}
+.bg-main {
+  background-color: $main_color;
+}
+.bg-sub {
+  background-color: $sub_color;
+}
+.bg-gray {
+  background-color: #f0f3f4;
+}
+.bg-white {
+  background-color: #fff;
+}
+
+.h-full {
+  height: 100%;
+}
+.h-from {
+  .item {
+    margin: 5px;
+  }
+}
+.h-input {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  line-height: 1; 
+}

@@ -28,6 +28,9 @@ const actions = {
         }
         return page.id
       })
+  },
+  removePage ({ commit }, pageId) {
+    commit('REMOVE_PAGE', pageId)
   }
 }
 
@@ -37,6 +40,12 @@ const mutations = {
   },
   [types.ADD_PAGE] (state, pageData) {
     state.lists.push(pageData)
+  },
+  [types.REMOVE_PAGE] (state, pageId) {
+    const index = state.lists.findIndex((page) => page.id === pageId)
+    if (index > -1) {
+      state.lists.splice(index, 1)
+    }
   },
   [types.ADD_COMP_TO_PAGES] (state, compData) {
     const curPage = state.lists.find((page) => page.id === state.curPageId)

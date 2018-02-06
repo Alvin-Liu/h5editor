@@ -1,6 +1,6 @@
 <template>
-  <div class="tpl-lists">
-    <div class="item" @click="addNewModule('cImage')">图片</div>
+  <div class="m-comps">
+    <div class="itm" @click="addNewModule('cImage')">图片</div>
   </div>
 </template>
 

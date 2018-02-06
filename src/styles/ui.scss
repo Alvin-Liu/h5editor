@@ -1,5 +1,12 @@
-@import "reset.css";
-@import "function.css";
+// nec
+@import "./nec/reset.css";
+@import "./nec/function.css";
+
+// mixins
+@import "mixins.scss";
+
 @import "variable.scss";
+@import "main.scss";
+@import "header.scss";
 @import "edit.scss";
 @import "page.scss";

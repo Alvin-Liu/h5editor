@@ -9,11 +9,11 @@ import { local } from '@/utils'
 
 Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production'
+const SAVE_KEY_NAME = 'UserData'
 
 export default new Vuex.Store({
   state: {
-    versior: 0.2,
+    versior: 0.21,
     propsPanel: {
       status: false,
       name: '',
@@ -25,7 +25,7 @@ export default new Vuex.Store({
   },
   actions: {
     getUserData ({ state, commit, dispatch }) {
-      const userData = localStorage.getItem('UserData')
+      const userData = localStorage.getItem(SAVE_KEY_NAME)
       if (userData) {
         try {
           const curUserData = JSON.parse(userData)
@@ -47,7 +47,7 @@ export default new Vuex.Store({
       }
     },
     saveUserData ({ state }) {
-      local.set('UserData', JSON.stringify({
+      local.set(SAVE_KEY_NAME, JSON.stringify({
         versior: state.versior,
         pages: {
           lists: state.pages.lists
@@ -80,5 +80,5 @@ export default new Vuex.Store({
     pages,
     components
   },
-  strict: debug
+  strict: process.env.NODE_ENV !== 'production'
 })

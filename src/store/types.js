@@ -5,6 +5,7 @@ export const TOGGLE_COMP = 'TOGGLE_COMP'
 
 // 页面
 export const ADD_PAGE = 'ADD_PAGE'
+export const REMOVE_PAGE = 'REMOVE_PAGE'
 export const TOGGLE_PAGE = 'TOGGLE_PAGE'
 export const ADD_COMP_TO_PAGES = 'ADD_COMP_TO_PAGES'
 
