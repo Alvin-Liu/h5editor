@@ -9,6 +9,7 @@
     <div class="g-sd fr">
       <div class="actions">
         <el-button type="primary" @click="$store.dispatch('saveUserData')">保存</el-button>
+        <el-button type="success" @click="preview">预览</el-button>
       </div>
     </div>
   </div>
@@ -28,6 +29,11 @@ export default {
       set (val) {
         this.$store.commit('SET_CUR_PAGE_INDEX', val)
       }
+    }
+  },
+  methods: {
+    preview () {
+      this.$router.push('/preview')
     }
   },
   components: {

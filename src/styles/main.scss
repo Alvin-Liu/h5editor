@@ -2,19 +2,29 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: #d0cfd8;
 }
-.bg-main {
+
+#app {
+  position: relative;
+  height: 100%;
+}
+
+.s-bg-main {
   background-color: $main_color;
 }
-.bg-sub {
+.s-bg-sub {
   background-color: $sub_color;
 }
-.bg-gray {
+.s-bg-gray {
   background-color: #f0f3f4;
 }
-.bg-white {
+.s-bg-white {
   background-color: #fff;
 }
 

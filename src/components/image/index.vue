@@ -1,5 +1,5 @@
 <template>
-  <div class="c-image" :style="cm.css | parseCss">
+  <div class="c-image" :style="cm.css | formatStyle">
     <a href="#">
       <img :src="imgUrl" alt="img">
     </a>
@@ -24,30 +24,6 @@ export default {
     cm () {
       return this.$store.getters.getCompConfigByCompid(this.compid)
     }
-  },
-  filters: {
-    parseCss: function (css) {
-      const cssLists = {
-        bgc: 'background-color'
-      }
-      let newCss = {}
-      for (let key in css) {
-        if (cssLists[key]) {
-          newCss[cssLists[key]] = css[key]
-        }
-      }
-      return newCss
-    }
   }
 }
 </script>
-<style lang="scss">
-  .c-image {
-    a {
-      display: block;
-      img {
-        width: 100%;
-      }
-    }
-  }
-</style>

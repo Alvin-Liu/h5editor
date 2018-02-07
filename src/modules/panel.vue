@@ -1,7 +1,7 @@
 <template>
   <el-container class="h-full">
-    <el-header height="40px" class="panel-header bg-sub">页面设置</el-header>
-    <el-main class="f-cb bg-white">
+    <el-header height="40px" class="panel-header s-bg-sub">页面设置</el-header>
+    <el-main class="f-cb s-bg-white">
       <ul class="page-lists">
         <li
           v-for="(itm, idx) in pages"

@@ -3,10 +3,13 @@
 @import "./nec/function.css";
 
 // mixins
-@import "mixins.scss";
+@import "./mixins.scss";
 
-@import "variable.scss";
-@import "main.scss";
-@import "header.scss";
-@import "edit.scss";
-@import "page.scss";
+@import "./variable.scss";
+@import "./main.scss";
+@import "./header.scss";
+@import "./edit.scss";
+@import "./page.scss";
+
+// components
+@import "./components/image.scss"
