@@ -2,7 +2,7 @@
   <div class="props-panel" v-show="propsPanel.status">
     <div class="props-title">
       设置面板
-      <i class="f-fr el-icon-close props-close" @click="$store.commit('CLOSE_PROPS_PAANEL')"></i>
+      <i class="f-fr el-icon-close props-close" @click="$store.commit('CLOSE_PROPS_PANEL')"></i>
     </div>
     <div class="props-body">
       <keep-alive>

@@ -44,13 +44,15 @@ export default {
   },
   methods: {
     handleClick (comp) {
-      this.$store.commit('OPEN_PROPS_PAANEL', {
+      this.$store.commit('OPEN_PROPS_PANEL', {
         name: comp.name,
         id: comp.id
       })
     },
     handleDblclick (name) {
-      console.log('dblclick')
+      if (name === 'cImage') {
+        this.$store.commit('SET_PICK_IMG', true)
+      }
     },
     toggleCompid (id) {
       this.$store.commit('TOGGLE_COMP', id)

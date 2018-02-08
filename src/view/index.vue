@@ -19,6 +19,8 @@
       </el-aside>
       <!-- 属性编辑面板 -->
       <props-panel />
+      <!-- 图片选取 -->
+      <pick-img />
     </el-container>
   </el-container>
 </template>
@@ -29,7 +31,8 @@ export default {
     pagePanel: () => import('@/modules/panel'),
     topbar: () => import('@/modules/topbar'),
     container: () => import('@/modules/container'),
-    propsPanel: () => import('@/modules/props')
+    propsPanel: () => import('@/modules/props'),
+    pickImg: () => import('@/dialog/pick-img')
   }
 }
 </script>

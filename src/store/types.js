@@ -10,8 +10,11 @@ export const TOGGLE_PAGE = 'TOGGLE_PAGE'
 export const ADD_COMP_TO_PAGES = 'ADD_COMP_TO_PAGES'
 
 // 属性编辑调整
-export const OPEN_PROPS_PAANEL = 'OPEN_PROPS_PAANEL'
-export const CLOSE_PROPS_PAANEL = 'CLOSE_PROPS_PAANEL'
+export const OPEN_PROPS_PANEL = 'OPEN_PROPS_PANEL'
+export const CLOSE_PROPS_PANEL = 'CLOSE_PROPS_PANEL'
+
+// 图片选取
+export const SET_PICK_IMG = 'SET_PICK_IMG'
 
 // 保存、获取
 export const INIT_USER_DATA = 'INIT_USER_DATA'

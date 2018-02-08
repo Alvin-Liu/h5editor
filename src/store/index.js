@@ -18,10 +18,14 @@ export default new Vuex.Store({
       status: false,
       name: '',
       id: ''
+    },
+    pickImg: {
+      status: false
     }
   },
   getters: {
-    propsPanel: (state) => state.propsPanel
+    propsPanel: (state) => state.propsPanel,
+    pickImg: (state) => state.pickImg
   },
   actions: {
     getUserData ({ state, commit, dispatch }) {
@@ -65,15 +69,22 @@ export default new Vuex.Store({
         }
       }, [])
     },
-    [types.OPEN_PROPS_PAANEL] (state, { id, name }) {
+    [types.OPEN_PROPS_PANEL] (state, { id, name }) {
       state.propsPanel = {
         status: true,
         name: name,
         id: id
       }
     },
-    [types.CLOSE_PROPS_PAANEL] (state) {
+    [types.CLOSE_PROPS_PANEL] (state) {
       state.propsPanel.status = false
+    },
+    [types.SET_PICK_IMG] (state, payload) {
+      if (typeof payload === 'boolean') {
+        state.pickImg.status = payload
+      } else {
+        Object.assign(state.pickImg, payload)
+      }
     }
   },
   modules: {
