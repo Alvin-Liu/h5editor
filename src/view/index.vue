@@ -20,7 +20,7 @@
       <!-- 属性编辑面板 -->
       <props-panel />
       <!-- 图片选取 -->
-      <pick-img />
+      <pick-image />
     </el-container>
   </el-container>
 </template>
@@ -32,7 +32,7 @@ export default {
     topbar: () => import('@/modules/topbar'),
     container: () => import('@/modules/container'),
     propsPanel: () => import('@/modules/props'),
-    pickImg: () => import('@/dialog/pick-img')
+    pickImage: () => import('@/dialog/pick-image/index')
   }
 }
 </script>

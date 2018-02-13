@@ -12,7 +12,6 @@
         :x="comp.css.l"
         :angle="comp.css.rotate"
         @activated="toggleCompid(comp.id)"
-        @deactivated="toggleCompid(null)"
         @dragging="handleDragging"
         @resizing="handleResizing"
         @rotating="handleRotating"
@@ -51,7 +50,18 @@ export default {
     },
     handleDblclick (name) {
       if (name === 'cImage') {
-        this.$store.commit('SET_PICK_IMG', true)
+        this.$store.commit('SET_PICK_IMG', {
+          status: true,
+          callback: (img) => {
+            console.log(img.url)
+            this.$store.commit('EDIT_COMP', {
+              type: 'props',
+              value: {
+                src: img.url
+              }
+            })
+          }
+        })
       }
     },
     toggleCompid (id) {

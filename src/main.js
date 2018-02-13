@@ -17,6 +17,8 @@ import formatStyle from '@/filters/formatStyle.js'
 
 Vue.use(ElementUI)
 
+Vue.prototype.$log = console.log.bind(console)
+
 Vue.filter('formatStyle', formatStyle)
 
 Vue.config.productionTip = false

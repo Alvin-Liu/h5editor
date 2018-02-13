@@ -41,6 +41,7 @@ const mutations = {
   [types.EDIT_COMP] (state, { type, value, compid }) {
     const comp = state.lists.find((cp) => cp.id === state.curCompId || compid)
     if (comp) {
+      console.log(value)
       Object.assign(comp[type], value)
     }
   },

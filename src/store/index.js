@@ -20,7 +20,8 @@ export default new Vuex.Store({
       id: ''
     },
     pickImg: {
-      status: false
+      status: false,
+      callback: null
     }
   },
   getters: {

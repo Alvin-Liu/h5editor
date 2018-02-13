@@ -1,7 +1,7 @@
 <template>
   <div class="c-image" :style="cm.css | formatStyle">
     <a href="#">
-      <img :src="imgUrl" alt="img">
+      <img :src="cm.props.src">
     </a>
   </div>
 </template>
@@ -13,11 +13,6 @@ export default {
     compid: {
       type: [String, Number],
       required: true
-    }
-  },
-  data () {
-    return {
-      imgUrl: 'static/images/logo.png'
     }
   },
   computed: {
