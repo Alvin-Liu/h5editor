@@ -1,5 +1,7 @@
 import cImage from './image'
+import cText from './text'
 
 export default {
-  cImage
+  cImage,
+  cText
 }

@@ -10,6 +10,8 @@
         :h="comp.css.h"
         :y="comp.css.t"
         :x="comp.css.l"
+        :minw="10"
+        :minh="10"
         :angle="comp.css.rotate"
         @activated="toggleCompid(comp.id)"
         @dragging="handleDragging"
