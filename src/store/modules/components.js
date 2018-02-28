@@ -39,10 +39,20 @@ const mutations = {
     state.curCompId = id
   },
   [types.EDIT_COMP] (state, { type, value, compid }) {
-    const comp = state.lists.find((cp) => cp.id === state.curCompId || compid)
+    const comp = state.lists.find((cp) => cp.id === compid || cp.id === state.curCompId)
     if (comp) {
-      console.log(value)
-      Object.assign(comp[type], value)
+      let compProp = comp[type]
+      // 简单处理对象，默认为纯对象（没有数组等类型）
+      for (let key in value) {
+        if (compProp[key] === undefined) {
+          continue
+        }
+        if (typeof value[key] === 'object') {
+          Object.assign(compProp[key], value[key])
+        } else {
+          compProp[key] = value[key]
+        }
+      }
     }
   },
   [types.ADD_COMP] (state, compData) {

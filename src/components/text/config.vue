@@ -7,6 +7,9 @@
       <el-collapse accordion>
         <el-collapse-item title="基础属性" name="1" class="h-from">
           <div class="item">
+            颜色：<el-color-picker :value="css.c" @change="updateCssFontColor" />
+          </div>
+          <div class="item">
             背景色：<el-color-picker :value="css.bgc" @change="updateCssBg" />
           </div>
         </el-collapse-item>
@@ -38,21 +41,15 @@ export default {
     }
   },
   methods: {
-    updateCssBg (value) {
-      this.$store.commit('EDIT_COMP', {
-        type: 'css',
-        compid: this.compid,
-        value: {
-          'bgc': value
-        }
+    updateCssFontColor (value) {
+      this.updateCss('ft', {
+        c: value
       })
     },
-    updateCss (e, prop) {
-      const target = e.target
-      let value = target.value
-      if (target.type === 'number') {
-        value = +value
-      }
+    updateCssBg (value) {
+      this.updateCss('bgc', value)
+    },
+    updateCss (prop, value) {
       this.$store.commit('EDIT_COMP', {
         type: 'css',
         compid: this.compid,

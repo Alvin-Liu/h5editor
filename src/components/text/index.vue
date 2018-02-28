@@ -1,6 +1,6 @@
 <template>
   <div class="c-text" :style="cm.css | formatStyle">
-    <a href="#" v-html="cm.props.text"></a>
+    <a :style="linkStyle | formatStyle" href="#" v-html="cm.props.text"></a>
   </div>
 </template>
 
@@ -16,6 +16,12 @@ export default {
   computed: {
     cm () {
       return this.$store.getters.getCompConfigByCompid(this.compid)
+    },
+    linkStyle () {
+      const css = this.cm.css
+      return {
+        ft: css.ft
+      }
     }
   }
 }
