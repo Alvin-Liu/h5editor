@@ -1,5 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import 'babel-polyfill'
 import Vue from 'vue'
 import store from '@/store'
 import ElementUI from 'element-ui'
@@ -9,7 +10,7 @@ import 'animate.css'
 import '@/assets/css/swiper.css'
 import router from '@/router'
 import '@/styles/ui.scss'
-import formatStyle from '@/filters/formatStyle.js'
+import calcStyle from '@/filters/calc-style.js'
 
 // const clientW = document.body.clientWidth
 // const percent = clientW / 320
@@ -19,7 +20,7 @@ Vue.use(ElementUI)
 
 Vue.prototype.$log = console.log.bind(console)
 
-Vue.filter('formatStyle', formatStyle)
+Vue.filter('calcStyle', calcStyle)
 
 Vue.config.productionTip = false
 

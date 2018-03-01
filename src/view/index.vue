@@ -1,10 +1,12 @@
 <template>
-  <el-container>
-    <el-header class="s-bg-main g-hd" height="8vh">
+  <el-container id="view">
+    <el-header class="s-bg-main g-hd" height="auto">
       <topbar />
     </el-header>
-    <el-container style="height: 92vh">
+    <el-container>
       <el-aside>
+        <!-- 属性编辑面板 -->
+        <props-panel />
       </el-aside>
       <!-- 编辑视图面板 -->
       <el-main id="workspace">
@@ -17,8 +19,6 @@
       <el-aside>
         <page-panel />
       </el-aside>
-      <!-- 属性编辑面板 -->
-      <props-panel />
       <!-- 图片选取 -->
       <pick-image />
     </el-container>

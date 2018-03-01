@@ -1,7 +1,5 @@
 <template>
   <el-tabs v-model="activeName">
-    <el-tab-pane label="内容" name="content"></el-tab-pane>
-    <el-tab-pane label="风格" name="style"></el-tab-pane>
     <el-tab-pane label="动画" name="animate"></el-tab-pane>
     <el-tab-pane label="样式" name="css">
       <el-collapse accordion>

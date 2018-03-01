@@ -11,16 +11,17 @@
   @include grail-layout(200px, 200px)
   .actions {
     text-align: center;
-    margin-top: 7px;
+    margin-top: 5px;
   }
 }
 // 模板列表
 .m-comps {
-  margin-top: 10px;
+  margin-top: 7px;
   text-align: center;
   .itm {
     display: inline-block;
     padding: 10px 30px;
+    margin: 0 5px;
     border: 1px solid #dedede;
     color: #fff;
     text-align: center;

@@ -1,6 +1,6 @@
 <template>
-  <div class="c-text" :style="cm.css | formatStyle">
-    <a :style="linkStyle | formatStyle" href="#" v-html="cm.props.text"></a>
+  <div class="c-text" :style="cm.css | calcStyle">
+    <a :style="linkStyle | calcStyle" href="#" v-html="cm.props.text"></a>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="c-image" :style="cm.css | formatStyle">
+  <div class="c-image" :style="cm.css | calcStyle">
     <a href="#">
       <img :src="cm.props.src">
     </a>
