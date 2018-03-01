@@ -9,7 +9,7 @@ export default {
     delay: 0.4
   },
   props: {
-    src: 'static/images/logo.png'
+    src: './static/images/logo.png'
   },
   css: {
     t: 0,
