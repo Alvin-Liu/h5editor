@@ -54,6 +54,10 @@ export const PATTERN_MATCH = {
     value: 'line-height',
     unit: 'px'
   },
+  br: {
+    value: 'border-radius',
+    unit: 'px'
+  },
   c: 'color',
   bgc: 'background-color'
 }
