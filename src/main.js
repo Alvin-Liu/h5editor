@@ -12,6 +12,8 @@ import router from '@/router'
 import '@/styles/ui.scss'
 import calcStyle from '@/filters/calc-style.js'
 
+import '@/components/function/index.js'
+
 // const clientW = document.body.clientWidth
 // const percent = clientW / 320
 // document.getElementById('viewport').setAttribute('content', 'width=320, initial-scale=' + percent + ', maximum-scale=' + percent + ', user-scalable=no')

@@ -1,0 +1,41 @@
+.item-group {
+  width: 200px;
+  margin: 0 auto;
+  > .item {
+    overflow: hidden;
+    margin: 10px 0;
+  }
+  label {
+    display: inline-block;
+    width: 60px;
+    margin-right: 10px;
+    text-align: right;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  input {
+    width: 100px;
+    padding: 5px 10px;
+  }
+  select {
+    min-width: 100px;
+    padding: 5px 10px;
+  }
+}
+
+// .m-ft {
+//   select {
+//     min-width: 100px;
+//     padding: 5px 10px;
+//   }
+// }
+// .m-bd {
+//   select {
+//     min-width: 100px;
+//     padding: 5px 10px;
+//   }
+//   input {
+//     width: 100px;
+//     padding: 5px 10px;
+//   }
+// }

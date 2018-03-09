@@ -24,7 +24,7 @@ const actions = {
   addNewComp ({ commit, getters }, name) {
     getNewComp()
       .then((comp) => {
-        const compData = dComps[name]
+        const compData = dComps[name] && dComps[name]()
         if (compData) {
           const newCompData = Object.assign(deepClone(compData), comp, { parentId: getters.curPageId })
           commit('ADD_COMP_TO_PAGES', newCompData)
