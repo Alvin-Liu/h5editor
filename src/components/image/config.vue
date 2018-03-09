@@ -13,9 +13,6 @@
             </div>
           </div>
         </el-collapse-item>
-        <el-collapse-item title="字体属性" class="h-from">
-          <f-font :value="css.ft" @change="updateCss" />
-        </el-collapse-item>
         <el-collapse-item title="边框属性" class="h-from">
           <f-bd :value="css.bd" @change="updateCss" />
         </el-collapse-item>

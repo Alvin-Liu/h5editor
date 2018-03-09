@@ -17,14 +17,14 @@ export default () => {
       l: 0,
       w: 200,
       h: 200,
-      rotate: 0,
-      bgc: '#fff',
       bd: {
         w: 1,
         t: 1,
         c: '#fff'
       },
-      br: 5
+      br: 5,
+      rotate: 0,
+      bgc: '#fff'
     }
   }
 }
