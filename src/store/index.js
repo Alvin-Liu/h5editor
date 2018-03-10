@@ -51,6 +51,12 @@ export default new Vuex.Store({
         dispatch('initH5Editor')
       }
     },
+    initH5Editor ({ dispatch, commit }) {
+      dispatch('addNewPage')
+        .then((id) => {
+          commit('TOGGLE_PAGE', id)
+        })
+    },
     saveUserData ({ state }) {
       local.set(SAVE_KEY_NAME, JSON.stringify({
         versior: state.versior,

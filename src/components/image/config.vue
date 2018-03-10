@@ -25,12 +25,6 @@
 import compConfig from '@/mixins/comp-config.js'
 export default {
   name: 'imageConfig',
-  props: {
-    compid: {
-      type: [String, Number],
-      required: true
-    }
-  },
   mixins: [compConfig]
 }
 </script>

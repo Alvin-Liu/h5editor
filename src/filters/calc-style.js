@@ -1,4 +1,5 @@
 import {
+  BG_REPEAT,
   FONT_FAMILYS,
   FONT_SIZES,
   BORDER_STYLES,
@@ -7,6 +8,13 @@ import {
 
 const getCssObj = (key, value) => {
   const handler = {
+    bg: () => {
+      return {
+        'background-color': value.c,
+        'background-image': value.i,
+        'background-repeat': BG_REPEAT[value.t]
+      }
+    },
     bd: () => {
       return {
         'border-width': value.w + 'px',

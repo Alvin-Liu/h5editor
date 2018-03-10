@@ -8,7 +8,7 @@
       <keep-alive>
         <component 
           :is="propsPanel.name"
-          :compid="propsPanel.id">
+          :id="propsPanel.id">
         </component>
       </keep-alive>
     </div>
@@ -17,6 +17,7 @@
 
 <script>
 import compConfigs from '@/components/config.js'
+import pageConfig from '@/dialog/page-config.vue'
 export default {
   name: 'props',
   computed: {
@@ -27,6 +28,9 @@ export default {
       return this.$store.getters.curComp
     }
   },
-  components: compConfigs
+  components: {
+    ...compConfigs,
+    pageConfig
+  }
 }
 </script>

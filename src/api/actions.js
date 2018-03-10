@@ -8,10 +8,22 @@ export const getNewComp = () => {
   })
 }
 
+export const getNewPageId = () => {
+  return request({
+    id: getRandomId(32)
+  })
+}
+
 export const getNewPage = () => {
   return request({
     id: getRandomId(32),
-    css: {},
+    css: {
+      bg: {
+        i: '',
+        c: '',
+        t: 0
+      }
+    },
     props: {},
     comps: []
   })

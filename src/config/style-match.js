@@ -1,3 +1,10 @@
+export const BG_REPEAT = {
+  1: 'repeat',
+  2: 'repeat-x',
+  3: 'repeat-y',
+  4: 'no-repeat'
+}
+
 export const FONT_FAMILYS = {
   1: '微软雅黑',
   2: '宋体',

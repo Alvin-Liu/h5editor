@@ -9,7 +9,15 @@
           :class="{ 'active': curPageId == itm.id }"
           @click="curPageId = itm.id">
           <span>第{{ idx + 1 }}页</span>
-          <i class="el-icon-delete f-fr" @click="$store.dispatch('removePage', itm.id)"></i>
+          <el-dropdown class="f-fr" @command="handleCommand">
+            <i class="el-icon-more"></i>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="insert">新建页面</el-dropdown-item>
+              <el-dropdown-item command="edit">页面设置</el-dropdown-item>
+              <!-- <el-dropdown-item command="copy">复制页面</el-dropdown-item> -->
+              <el-dropdown-item command="remove">删除页面</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </li>
       </ul>
       <el-button type="primary" @click="$store.dispatch('addNewPage')">新增页面</el-button>
@@ -31,6 +39,18 @@ export default {
       set (val) {
         this.$store.commit('TOGGLE_PAGE', val)
       }
+    }
+  },
+  methods: {
+    handleCommand (command) {
+      const pageId = this.curPageId
+      const commandToAction = {
+        insert: 'insertPage',
+        copy: 'copyPage',
+        remove: 'removePage',
+        edit: 'openEditPage'
+      }
+      this.$store.dispatch(commandToAction[command], pageId)
     }
   }
 }

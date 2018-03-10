@@ -3,7 +3,8 @@
     <div class="comp-lists"
       v-for="page in pages"
       :key="page.id"
-      v-show="page.id === curPageId">
+      v-show="page.id === curPageId"
+      :style="page.css | calcStyle">
       <vue-drr
         v-for="comp in page.comps"
         :w="comp.css.w"
@@ -55,7 +56,6 @@ export default {
         this.$store.commit('SET_PICK_IMG', {
           status: true,
           callback: (img) => {
-            console.log(img.url)
             this.$store.commit('EDIT_COMP', {
               type: 'props',
               value: {
