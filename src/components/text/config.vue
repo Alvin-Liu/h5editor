@@ -1,6 +1,8 @@
 <template>
   <el-tabs v-model="activeName">
-    <el-tab-pane label="动画" name="animate"></el-tab-pane>
+    <el-tab-pane label="动画" name="animate">
+      <f-ani :value="cm.anim" @change="updateAni" />
+    </el-tab-pane>
     <el-tab-pane label="样式" name="css">
       <el-collapse accordion v-model="activeCollapse">
         <el-collapse-item title="基础属性" name="1" class="h-from">

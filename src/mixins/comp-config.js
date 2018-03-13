@@ -1,3 +1,4 @@
+
 export default {
   props: {
     id: {
@@ -24,12 +25,24 @@ export default {
       this.updateCss({key: 'bgc', value: value})
     },
     updateCss ({ key, value }) {
-      this.$store.commit('EDIT_COMP', {
+      this.update({
         type: 'css',
-        compid: this.id,
         value: {
           [key]: value
         }
+      })
+    },
+    updateAni ({ key, value }) {
+      this.update({
+        type: 'anim',
+        value: value
+      })
+    },
+    update ({ type, value }) {
+      this.$store.commit('EDIT_COMP', {
+        type: type,
+        compid: this.id,
+        value: value
       })
     }
   }
