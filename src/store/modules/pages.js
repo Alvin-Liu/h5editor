@@ -1,5 +1,5 @@
 import * as types from '../types'
-import { getNewPage, getNewPageId } from '@/api/actions'
+import { getNewPageId, getNewPage } from '../functions'
 import { deepClone } from '@/utils'
 
 const state = {
@@ -23,46 +23,31 @@ const getters = {
 
 const actions = {
   addNewPage ({ commit }) {
-    return getNewPage()
-      .then((page) => {
-        if (page) {
-          commit('ADD_PAGE', page)
-        }
-        return page.id
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    const page = getNewPage()
+    if (page) {
+      commit('ADD_PAGE', page)
+    }
+    return page.id
   },
   insertPage ({ commit }, prePageId) {
-    return getNewPage()
-      .then((page) => {
-        if (page) {
-          commit('INSERT_PAGE', {
-            page,
-            pageId: prePageId
-          })
-        }
-        return page.id
+    const page = getNewPage()
+    if (page) {
+      commit('INSERT_PAGE', {
+        page,
+        pageId: prePageId
       })
-      .catch((e) => {
-        console.log(e)
-      })
+    }
+    return page.id
   },
   copyPage ({ commit }, pageId) {
-    return getNewPageId()
-      .then(({ id }) => {
-        if (id) {
-          commit('COPY_PAGE', {
-            prePageId: pageId,
-            pageId: id
-          })
-        }
-        return id
+    const id = getNewPageId()
+    if (id) {
+      commit('COPY_PAGE', {
+        prePageId: pageId,
+        pageId: id
       })
-      .catch((e) => {
-        console.log(e)
-      })
+    }
+    return id
   },
   removePage ({ commit }, pageId) {
     commit('REMOVE_PAGE', pageId)

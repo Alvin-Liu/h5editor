@@ -39,3 +39,29 @@
 //     padding: 5px 10px;
 //   }
 // }
+
+.m-animations {
+  > li {
+    float: left;
+    width: 46%;
+    margin: 10px 0;
+    text-align: center;
+    &:nth-child(2n) {
+      margin-left: 2%;
+    }
+  }
+}
+
+.item-page-background {
+  .img-box {
+    overflow: hidden;
+    width: 100%;
+    height: 180px;
+    margin: 10px 0;
+    border: 1px dashed #ccc;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-origin: content-box;
+    background-position: 50% 50%;
+  }
+}

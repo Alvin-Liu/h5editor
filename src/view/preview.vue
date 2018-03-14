@@ -5,6 +5,11 @@
         <swiper-slide 
           v-for="(page, idx) in pages"
           :key="page.id">
+          <div class="wrap-bg" 
+            :style="{
+              backgroundColor: page.css.bgc,
+              backgroundImage: 'url(' + page.css.bgi + ')'
+            }"></div>
           <vlist 
             v-for="comp in page.comps"
             :compid="comp.id"

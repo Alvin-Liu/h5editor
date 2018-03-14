@@ -2,7 +2,7 @@
   <ul class="m-animations">
     <li v-for="(animate, key) in animations"
       :key="key">
-      <el-button type="primary" @click="handleChangeType(key )">
+      <el-button type="primary" size="small" @click="handleChangeType(key )">
         {{ animate.name }}
         <i v-if="ani.type == key" class="el-icon-circle-check el-icon--right"></i>
       </el-button>

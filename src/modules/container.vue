@@ -5,6 +5,11 @@
       :key="page.id"
       v-show="page.id === curPageId"
       :style="page.css | calcStyle">
+      <div class="wrap-bg" 
+        :style="{
+          backgroundColor: page.css.bgc,
+          backgroundImage: 'url(' + page.css.bgi + ')'
+        }"></div>
       <vue-drr
         v-for="comp in page.comps"
         :w="comp.css.w"

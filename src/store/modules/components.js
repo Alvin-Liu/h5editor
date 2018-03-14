@@ -1,7 +1,5 @@
 import * as types from '../types'
-import dComps from '@/components/data.js'
-import { getNewComp } from '@/api/actions'
-import { deepClone } from '@/utils'
+import { getNewComp } from '../functions'
 
 const state = {
   lists: [],
@@ -22,15 +20,12 @@ const getters = {
 
 const actions = {
   addNewComp ({ commit, getters }, name) {
-    getNewComp()
-      .then((comp) => {
-        const compData = dComps[name] && dComps[name]()
-        if (compData) {
-          const newCompData = Object.assign(deepClone(compData), comp, { parentId: getters.curPageId })
-          commit('ADD_COMP_TO_PAGES', newCompData)
-          commit('ADD_COMP', newCompData)
-        }
-      })
+    const compData = getNewComp(name)
+    if (compData) {
+      const newCompData = Object.assign(compData, { parentId: getters.curPageId })
+      commit('ADD_COMP_TO_PAGES', newCompData)
+      commit('ADD_COMP', newCompData)
+    }
   }
 }
 

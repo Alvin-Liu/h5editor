@@ -3,13 +3,17 @@
     title="图片选取"
     :visible="pickImg.status"
     width="50%"
-    :before-close="handleClose">
-    <el-tabs tab-position="left" style="min-height: 200px;">
-      <el-tab-pane label="系统图片">
-        <img-lists :lists="imgLists" @pick="pick" />
+    :before-close="handleCancel">
+    <el-tabs 
+      tab-position="left" 
+      v-model="activeName" 
+      style="min-height: 200px;" 
+      @tab-click="handleClick">
+      <el-tab-pane label="系统图片" name="public">
+        <img-lists :lists="publicImgLists" @pick="pick" :active="curPickImg" />
       </el-tab-pane>
-      <el-tab-pane label="我的图片">
-        <img-lists :lists="imgLists" @pick="pick" />
+      <el-tab-pane label="我的图片" name="user">
+        <img-lists :lists="userImgLists" @pick="pick" :active="curPickImg" />
       </el-tab-pane>
     </el-tabs>
     <span slot="footer" class="dialog-footer">
@@ -21,29 +25,20 @@
 
 <script>
 import lists from './lists.vue'
+import { getPublicMaterials, getUserMaterials } from '@/api/materials'
 export default {
   name: 'pickImg',
   data () {
     return {
+      activeName: 'public',
       curPickImg: {
+        id: '',
         name: '',
         desc: '',
         url: ''
       },
-      imgLists: [
-        {
-          id: 1,
-          name: 'logo',
-          url: 'static/images/logo.png',
-          desc: 'logo'
-        },
-        {
-          id: 2,
-          name: 'h5editor',
-          url: 'static/images/h5editor.png',
-          desc: 'h5editor'
-        }
-      ]
+      userImgLists: [],
+      publicImgLists: []
     }
   },
   computed: {
@@ -52,20 +47,44 @@ export default {
     }
   },
   methods: {
+    handleClick () {
+      const activeName = this.activeName
+      if (activeName === 'user' && this.hasFetchData === false) {
+        getUserMaterials().then((res) => {
+          this.hasFetchData = true
+          this.userImgLists = res.lists
+        }).catch(() => {
+          // this.userImgStatus = false
+          this.$notify.error({
+            title: '错误',
+            message: '图片列表获取失败'
+          })
+        })
+      }
+    },
     pick (img) {
       Object.assign(this.curPickImg, img)
     },
-    handleClose () {
-      this.$store.commit('SET_PICK_IMG', false)
-    },
     handleCancel () {
+      this.curPickImg.id = ''
       this.$store.commit('SET_PICK_IMG', false)
     },
     handleConfirm () {
-      console.log(this.curPickImg)
       this.pickImg && this.pickImg.callback && this.pickImg.callback(this.curPickImg)
       this.handleCancel()
     }
+  },
+  mounted () {
+    this.hasFetchData = false
+    getPublicMaterials().then((res) => {
+      this.publicImgLists = res.lists
+    }).catch(() => {
+      // this.publicImgStatus = false
+      this.$notify.error({
+        title: '错误',
+        message: '图片列表获取失败'
+      })
+    })
   },
   components: {
     imgLists: lists

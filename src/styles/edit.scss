@@ -17,12 +17,16 @@
   }
 }
 
-.m-animations {
-  > li {
-    float: left;
-    width: 50%;
-    margin: 10px 0;
-  }
+.wrap-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 50%;
 }
 
 #view {

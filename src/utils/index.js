@@ -80,6 +80,8 @@ export const extend = (...rest) => {
   return target
 }
 
+export const getRandomId = (radix = 10) => Date.now().toString(radix)
+
 export const local = {
   set (key, value) {
     localStorage.setItem(key, value)
