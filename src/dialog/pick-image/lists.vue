@@ -1,6 +1,6 @@
 <template>
   <ul class="img-lists">
-    <li v-for="img in lists" @click="pickImg(img)">
+    <li v-for="img in lists" :key="img.id" @click="pickImg(img)">
       <div class="imgbox">
         <div class="box">
           <img :src="img.url" :alt="img.name" :title="img.name">

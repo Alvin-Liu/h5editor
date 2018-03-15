@@ -1,6 +1,12 @@
 <template>
   <div id="preview" class="m-simulator">
     <div class="wrap">
+      <div class="bgm-btn" 
+        v-if="h5Config.bgm"
+        :class="{rotate: isPlay}" 
+        @click="togglePlay">
+        <audio ref="music" :src="h5Config.bgm" autoplay preload="auto" loop></audio>
+      </div>
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide 
           v-for="(page, idx) in pages"
@@ -32,6 +38,7 @@ export default {
   name: 'Preview',
   data () {
     return {
+      isPlay: true,
       activePage: 0,
       animations: ANI_NAME,
       swiperOption: {
@@ -45,6 +52,21 @@ export default {
     },
     pages () {
       return this.$store.getters.pages
+    },
+    h5Config () {
+      return this.$store.getters.h5Config
+    }
+  },
+  methods: {
+    togglePlay () {
+      const music = this.$refs.music
+      if (this.isPlay) {
+        this.isPlay = false
+        music.pause()
+      } else {
+        this.isPlay = true
+        music.play()
+      }
     }
   },
   mounted () {

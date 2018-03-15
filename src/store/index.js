@@ -13,7 +13,7 @@ const SAVE_KEY_NAME = 'UserData'
 
 export default new Vuex.Store({
   state: {
-    versior: 0.23,
+    versior: 0.24,
     propsPanel: {
       status: false,
       name: '',
@@ -22,11 +22,20 @@ export default new Vuex.Store({
     pickImg: {
       status: false,
       callback: null
+    },
+    pickBgm: {
+      status: false,
+      callback: null
+    },
+    h5Config: {
+      bgm: ''
     }
   },
   getters: {
     propsPanel: (state) => state.propsPanel,
-    pickImg: (state) => state.pickImg
+    pickImg: (state) => state.pickImg,
+    pickBgm: (state) => state.pickBgm,
+    h5Config: (state) => state.h5Config
   },
   actions: {
     getUserData ({ state, commit, dispatch }) {
@@ -34,6 +43,7 @@ export default new Vuex.Store({
       if (userData) {
         try {
           const curUserData = JSON.parse(userData)
+          // 避免数据调整造成的错误，旧版本直接舍弃
           if (curUserData.versior && (curUserData.versior >= state.versior)) {
             const pages = curUserData.pages
             commit('INIT_USER_DATA', curUserData)
@@ -57,9 +67,13 @@ export default new Vuex.Store({
           commit('TOGGLE_PAGE', id)
         })
     },
+    setH5 ({ commit }, config) {
+      commit('SET_H5_CONFIG', config)
+    },
     saveUserData ({ state }) {
       local.set(SAVE_KEY_NAME, JSON.stringify({
         versior: state.versior,
+        h5Config: state.h5Config,
         pages: {
           lists: state.pages.lists
         }
@@ -69,7 +83,8 @@ export default new Vuex.Store({
   mutations: {
     [types.INIT_USER_DATA] (state, userData) {
       state.versior = userData.versior
-      state.pages.lists = userData.pages.lists
+      Object.assign(state.h5Config, userData.h5Config)
+      state.pages.lists = state.pages.lists.concat(userData.pages.lists)
       state.components.lists = userData.pages.lists.reduce((lists, page) => {
         if (page) {
           return lists.concat(page.comps)
@@ -92,6 +107,16 @@ export default new Vuex.Store({
       } else {
         Object.assign(state.pickImg, payload)
       }
+    },
+    [types.SET_PICK_BGM] (state, payload) {
+      if (typeof payload === 'boolean') {
+        state.pickBgm.status = payload
+      } else {
+        Object.assign(state.pickBgm, payload)
+      }
+    },
+    [types.SET_H5_CONFIG] (state, config) {
+      Object.assign(state.h5Config, config)
     }
   },
   modules: {

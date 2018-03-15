@@ -4,6 +4,7 @@
       <topbar />
     </el-header>
     <el-container>
+      <canvas ref="qrcode"></canvas>
       <el-aside>
         <!-- 属性编辑面板 -->
         <props-panel />
@@ -21,6 +22,8 @@
       </el-aside>
       <!-- 图片选取 -->
       <pick-image />
+      <!-- 背景乐选取 -->
+      <pick-bgm />
     </el-container>
   </el-container>
 </template>
@@ -32,7 +35,8 @@ export default {
     topbar: () => import('@/modules/topbar'),
     container: () => import('@/modules/container'),
     propsPanel: () => import('@/modules/props'),
-    pickImage: () => import('@/dialog/pick-image/index')
+    pickImage: () => import('@/dialog/pick-image/index'),
+    pickBgm: () => import('@/dialog/pick-bgm/index')
   }
 }
 </script>

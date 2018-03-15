@@ -42,3 +42,19 @@ body {
   border: 1px solid #ddd;
   line-height: 1; 
 }
+
+.bgm-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 200;
+  width: 30px;
+  height: 30px;
+  background-image: url(../assets/bgmBtn-fbd2dc.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  &.rotate {
+    -webkit-animation: rotating 1.2s linear infinite;
+    animation: rotating 1.2s linear infinite;
+  }
+}
