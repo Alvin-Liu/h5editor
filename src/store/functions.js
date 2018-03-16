@@ -1,10 +1,11 @@
-import { getRandomId } from '@/utils'
-import dComps from '@/components/data.js'
+import CompDatas from '@/components/data.js'
+
+export const getRandomId = (radix = 10) => Date.now().toString(radix)
 
 export const getNewPageId = () => getRandomId(32)
 
 export const getNewComp = (name) => {
-  const compData = dComps[name] && dComps[name]()
+  const compData = CompDatas[name] && CompDatas[name]()
   if (compData) {
     return {
       ...compData,

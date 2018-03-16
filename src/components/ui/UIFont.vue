@@ -35,7 +35,7 @@ import {
   FONT_SIZES
 } from '@/config/style-match.js'
 export default {
-  name: 'FFont',
+  name: 'UIFont',
   props: {
     value: {
       type: Object,

@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'pageConfig',
+  name: 'PagePropConfig',
   data () {
     return {
       activeCollapse: '1'

@@ -1,7 +1,7 @@
-import cImage from './image/config.vue'
-import cText from './text/config.vue'
+import ImageConfig from './image/config.vue'
+import TextConfig from './text/config.vue'
 
 export default {
-  cImage,
-  cText
+  ImageConfig,
+  TextConfig
 }

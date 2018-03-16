@@ -10,6 +10,15 @@
           backgroundColor: page.css.bgc,
           backgroundImage: 'url(' + page.css.bgi + ')'
         }"></div>
+<!--       <div v-for="comp in page.comps">
+        <CompLists 
+          @click="handleClick(comp)"
+          @dblclick="handleDblclick"
+          :compid="comp.id"
+          class="comp"
+          :name="comp.name"
+        />
+      </div> -->
       <vue-drr
         v-for="comp in page.comps"
         :w="comp.css.w"
@@ -24,13 +33,13 @@
         @resizing="handleResizing"
         @rotating="handleRotating"
         :key="comp.id">
-        <vlist 
+        <CompLists 
           @click="handleClick(comp)"
           @dblclick="handleDblclick"
           :compid="comp.id"
           class="comp"
-          :name="comp.name">
-        </vlist>
+          :name="comp.name"
+        />
       </vue-drr>
     </div>
   </div>
@@ -38,9 +47,13 @@
 
 <script>
 import vueDrr from 'vue-drr'
-import vcomps from '@/components'
+import BaseComps from '@/components/index.js'
+
+const BASE_COMP_NAME = 'Base'
+const BASE_COMP_CONFIG_NAME = 'Config'
+
 export default {
-  name: 'modules',
+  name: 'TheContainer',
   computed: {
     pages () {
       return this.$store.getters.pages
@@ -52,12 +65,12 @@ export default {
   methods: {
     handleClick (comp) {
       this.$store.commit('OPEN_PROPS_PANEL', {
-        name: comp.name,
+        name: comp.name + BASE_COMP_CONFIG_NAME,
         id: comp.id
       })
     },
     handleDblclick (name) {
-      if (name === 'cImage') {
+      if (name === 'Image') {
         this.$store.commit('SET_PICK_IMG', {
           status: true,
           callback: (img) => {
@@ -102,7 +115,7 @@ export default {
   },
   components: {
     vueDrr: vueDrr,
-    vlist: {
+    CompLists: {
       props: {
         name: {
           type: String,
@@ -114,7 +127,7 @@ export default {
         }
       },
       render (h) {
-        const module = vcomps[this.name]
+        const module = BaseComps[BASE_COMP_NAME + this.name]
         return h(module, {
           props: {
             compid: this.compid

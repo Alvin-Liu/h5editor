@@ -16,14 +16,14 @@
               backgroundColor: page.css.bgc,
               backgroundImage: 'url(' + page.css.bgi + ')'
             }"></div>
-          <vlist 
+          <CompLists 
             v-for="comp in page.comps"
             :compid="comp.id"
             class="comp animated"
             :class="{[animations[comp.anim.type]['class']]: activePage === idx}"
             :name="comp.name"
-            :key="comp.id">
-          </vlist>
+            :key="comp.id"
+          />
         </swiper-slide>
       </swiper>
     </div>
@@ -32,8 +32,11 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import vcomps from '@/components'
+import BaseComps from '@/components'
 import { ANI_NAME } from '@/config/animation-match.js'
+
+const BASE_COMP_NAME = 'Base'
+
 export default {
   name: 'Preview',
   data () {
@@ -84,7 +87,7 @@ export default {
   components: {
     swiper,
     swiperSlide,
-    vlist: {
+    CompLists: {
       props: {
         name: {
           type: String,
@@ -96,7 +99,7 @@ export default {
         }
       },
       render (h) {
-        const module = vcomps[this.name]
+        const module = BaseComps[BASE_COMP_NAME + this.name]
         return h(module, {
           props: {
             compid: this.compid

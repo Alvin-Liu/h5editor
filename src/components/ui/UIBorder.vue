@@ -27,7 +27,7 @@ import {
   BORDER_STYLES
 } from '@/config/style-match.js'
 export default {
-  name: 'FFont',
+  name: 'UIBorder',
   props: {
     value: {
       type: Object,

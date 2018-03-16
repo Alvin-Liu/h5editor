@@ -30,7 +30,7 @@
 import lists from './lists.vue'
 import { getPublicBGMs, getUserBGMs } from '@/api/materials'
 export default {
-  name: 'pickBgm',
+  name: 'PickBgMusic',
   data () {
     return {
       isPlay: false,

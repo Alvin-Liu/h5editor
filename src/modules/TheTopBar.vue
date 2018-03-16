@@ -1,7 +1,7 @@
 <template>
   <div class="g-wrap">
     <div class="g-mn">
-      <module-lists />
+      <TheCompLists />
     </div>
     <div class="g-sd fl">
       <a href="/" class="logo">H5EDITOR</a>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'modules',
+  name: 'TheTopBar',
   computed: {
     pages () {
       return this.$store.getters.pages
@@ -37,7 +37,7 @@ export default {
     }
   },
   components: {
-    moduleLists: () => import('./modules')
+    TheCompLists: () => import('./TheCompLists')
   }
 }
 </script>

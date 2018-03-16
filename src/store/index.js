@@ -13,7 +13,7 @@ const SAVE_KEY_NAME = 'UserData'
 
 export default new Vuex.Store({
   state: {
-    versior: 0.24,
+    versior: 0.25,
     propsPanel: {
       status: false,
       name: '',

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'cText',
+  name: 'BaseText',
   props: {
     compid: {
       type: [String, Number],

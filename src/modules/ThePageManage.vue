@@ -1,6 +1,6 @@
 <template>
   <el-container class="h-full">
-    <el-header height="40px" class="panel-header s-bg-sub">页面设置</el-header>
+    <el-header height="auto" class="panel-header s-bg-sub">页面管理</el-header>
     <el-main class="f-cb s-bg-white">
       <ul class="page-lists">
         <li
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'modules',
+  name: 'ThePageManage',
   computed: {
     pages () {
       return this.$store.getters.pages

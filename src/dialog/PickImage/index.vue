@@ -27,7 +27,7 @@
 import lists from './lists.vue'
 import { getPublicMaterials, getUserMaterials } from '@/api/materials'
 export default {
-  name: 'pickImg',
+  name: 'PickImage',
   data () {
     return {
       activeName: 'public',

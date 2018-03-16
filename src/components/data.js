@@ -1,7 +1,7 @@
-import cImage from './image/data.js'
-import cText from './text/data.js'
+import ImageData from './image/data.js'
+import TextData from './text/data.js'
 
 export default {
-  cImage,
-  cText
+  ImageData,
+  TextData
 }

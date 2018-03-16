@@ -2,7 +2,7 @@ export default () => {
   return {
     id: 1,
     title: '文字',
-    name: 'cText',
+    name: 'Text',
     type: 1,
     anim: {
       type: 1,

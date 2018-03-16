@@ -2,7 +2,7 @@ export default () => {
   return {
     id: 1,
     title: '图片',
-    name: 'cImage',
+    name: 'Image',
     type: 1,
     anim: {
       type: 1,

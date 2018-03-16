@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'cImage',
+  name: 'BaseImage',
   props: {
     compid: {
       type: [String, Number],

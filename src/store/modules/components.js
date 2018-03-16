@@ -1,6 +1,8 @@
 import * as types from '../types'
 import { getNewComp } from '../functions'
 
+const BASE_COMP_SUFFIX = 'Data'
+
 const state = {
   lists: [],
   curCompId: null
@@ -20,7 +22,7 @@ const getters = {
 
 const actions = {
   addNewComp ({ commit, getters }, name) {
-    const compData = getNewComp(name)
+    const compData = getNewComp(name + BASE_COMP_SUFFIX)
     if (compData) {
       const newCompData = Object.assign(compData, { parentId: getters.curPageId })
       commit('ADD_COMP_TO_PAGES', newCompData)

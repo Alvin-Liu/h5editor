@@ -1,29 +1,27 @@
 <template>
   <el-container id="view">
     <el-header class="s-bg-main g-hd" height="auto">
-      <topbar />
+      <TheTopBar />
     </el-header>
     <el-container>
-      <canvas ref="qrcode"></canvas>
       <el-aside>
-        <!-- 属性编辑面板 -->
-        <props-panel />
+        <ThePropManage />
       </el-aside>
       <!-- 编辑视图面板 -->
       <el-main id="workspace">
         <div class="m-simulator work-part">
           <div class="wrap">
-            <container />
+            <TheContainer />
           </div>
         </div>
       </el-main>
       <el-aside>
-        <page-panel />
+        <ThePageManage />
       </el-aside>
       <!-- 图片选取 -->
-      <pick-image />
+      <PickImage />
       <!-- 背景乐选取 -->
-      <pick-bgm />
+      <PickBgMusic />
     </el-container>
   </el-container>
 </template>
@@ -31,12 +29,12 @@
 export default {
   name: 'index',
   components: {
-    pagePanel: () => import('@/modules/panel'),
-    topbar: () => import('@/modules/topbar'),
-    container: () => import('@/modules/container'),
-    propsPanel: () => import('@/modules/props'),
-    pickImage: () => import('@/dialog/pick-image/index'),
-    pickBgm: () => import('@/dialog/pick-bgm/index')
+    ThePageManage: () => import('@/modules/ThePageManage'),
+    TheTopBar: () => import('@/modules/TheTopBar'),
+    TheContainer: () => import('@/modules/TheContainer'),
+    ThePropManage: () => import('@/modules/ThePropManage'),
+    PickImage: () => import('@/dialog/PickImage/index'),
+    PickBgMusic: () => import('@/dialog/PickBgMusic/index')
   }
 }
 </script>

@@ -55,7 +55,7 @@ const actions = {
   },
   openEditPage ({ commit }, pageId) {
     commit('OPEN_PROPS_PANEL', {
-      name: 'pageConfig',
+      name: 'PagePropConfig',
       id: pageId
     })
   }

@@ -1,14 +1,14 @@
 <template>
   <div class="m-comps">
-    <div class="itm" @click="addNewModule('cImage')">图片</div>
-    <div class="itm" @click="addNewModule('cText')">文字</div>
+    <div class="itm" @click="addNewModule('Image')">图片</div>
+    <div class="itm" @click="addNewModule('Text')">文字</div>
     <div class="itm" @click="openMusicDialog">音乐</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'modules',
+  name: 'TheCompLists',
   methods: {
     addNewModule (name) {
       this.$store.dispatch('addNewComp', name)

@@ -12,7 +12,7 @@
 <script>
 import { ANI_NAME } from '@/config/animation-match.js'
 export default {
-  name: 'FAnimate',
+  name: 'UIAnimate',
   props: {
     value: {
       type: Object,

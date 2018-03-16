@@ -1,22 +1,35 @@
 <template>
   <el-tabs v-model="activeName">
     <el-tab-pane label="动画" name="animate">
-      <f-ani :value="cm.anim" @change="updateAni" />
+      <UIAnimate :value="cm.anim" @change="updateAni" />
     </el-tab-pane>
     <el-tab-pane label="样式" name="css">
       <el-collapse accordion>
         <el-collapse-item title="基础属性" name="1" class="h-from">
           <div class="item-group f-vama">
             <div class="item">
-              <label>背景色:</label><el-color-picker :value="css.bgc" @change="updateCssBg" size="mini" />
+              <label>背景色:</label>
+              <el-color-picker 
+                :value="css.bgc" 
+                @change="updateCssBg" 
+                size="mini" 
+              />
             </div>
             <div class="item">
-              <label>圆角:</label><input type="text" :value="css.br" @change="updateCss({ key: 'br', value: $event.target.value })">
+              <label>圆角:</label>
+              <input 
+                type="text" 
+                :value="css.br" 
+                @change="updateCss({ 
+                  key: 'br', 
+                  value: $event.target.value 
+                })"
+              />
             </div>
           </div>
         </el-collapse-item>
         <el-collapse-item title="边框属性" class="h-from">
-          <f-bd :value="css.bd" @change="updateCss" />
+          <UIBorder :value="css.bd" @change="updateCss" />
         </el-collapse-item>
       </el-collapse>
     </el-tab-pane>

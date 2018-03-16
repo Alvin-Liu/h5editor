@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import compConfigs from '@/components/config.js'
-import pageConfig from '@/dialog/page-config.vue'
+import CompConfigs from '@/components/config.js'
+import PagePropConfig from '@/dialog/PagePropConfig.vue'
 export default {
-  name: 'props',
+  name: 'ThePropManage',
   computed: {
     propsPanel () {
       return this.$store.getters.propsPanel
@@ -29,8 +29,8 @@ export default {
     }
   },
   components: {
-    ...compConfigs,
-    pageConfig
+    ...CompConfigs,
+    PagePropConfig
   }
 }
 </script>

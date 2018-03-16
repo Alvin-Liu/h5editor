@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import index from '@/view/index.vue'
-import preview from '@/view/preview.vue'
+import index from '@/views/index.vue'
+import preview from '@/views/preview.vue'
 
 Vue.use(Router)
 
