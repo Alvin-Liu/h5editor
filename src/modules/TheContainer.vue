@@ -19,7 +19,7 @@
           :name="comp.name"
         />
       </div> -->
-      <vue-drr
+      <VueDRR
         v-for="comp in page.comps"
         :w="comp.css.w"
         :h="comp.css.h"
@@ -40,13 +40,13 @@
           class="comp"
           :name="comp.name"
         />
-      </vue-drr>
+      </VueDRR>
     </div>
   </div>
 </template>
 
 <script>
-import vueDrr from 'vue-drr'
+import VueDRR from '@/libs/vue-drr'
 import BaseComps from '@/components/index.js'
 
 const BASE_COMP_NAME = 'Base'
@@ -114,7 +114,7 @@ export default {
     }
   },
   components: {
-    vueDrr: vueDrr,
+    VueDRR,
     CompLists: {
       props: {
         name: {
