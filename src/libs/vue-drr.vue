@@ -124,9 +124,7 @@ export default {
     }
   },
   created () {
-    this.parentX = 0
     this.parentW = 9999
-    this.parentY = 0
     this.parentH = 9999
 
     this.lastMouseX = 0
@@ -142,8 +140,8 @@ export default {
     this.elmH = 0
   },
   mounted () {
-    document.documentElement.addEventListener('mousemove', this.handleMove, true)
     document.documentElement.addEventListener('mousedown', this.deselect, true)
+    document.documentElement.addEventListener('mousemove', this.handleMove, true)
     document.documentElement.addEventListener('mouseup', this.handleUp, true)
 
     this.elmX = parseInt(this.$el.style.left)
@@ -154,8 +152,8 @@ export default {
     this.reviewDimensions()
   },
   beforeDestroy () {
-    document.documentElement.removeEventListener('mousemove', this.handleMove, true)
     document.documentElement.removeEventListener('mousedown', this.deselect, true)
+    document.documentElement.removeEventListener('mousemove', this.handleMove, true)
     document.documentElement.removeEventListener('mouseup', this.handleUp, true)
   },
   data () {
@@ -286,8 +284,8 @@ export default {
         if (this.handle.indexOf('n') >= 0) {
           if (this.elmH - dY < this.minh) {
             diffY = this.elmH - this.minh
-          } else if (this.elmY + dY < this.parentY) {
-            diffY = this.parentY - this.elmY
+          } else if (this.elmY + dY < 0) {
+            diffY = -this.elmY
           }
           this.mouseOffY = dY - diffY
           this.elmY += diffY
@@ -307,8 +305,8 @@ export default {
         if (this.handle.indexOf('w') >= 0) {
           if (this.elmW - dX < this.minw) {
             diffX = this.elmW - this.minw
-          } else if (this.elmX + dX < this.parentX) {
-            diffX = this.parentX - this.elmX
+          } else if (this.elmX + dX < 0) {
+            diffX = -this.elmX
           }
           this.mouseOffX = dX - diffX
           this.elmX += diffX
@@ -362,9 +360,9 @@ export default {
         this.$emit('dragging', this.left, this.top)
       } else if (this.rotating) {
         const origin = this.getOrigin()
-        const startAngle = Math.atan2(lastMouseY - origin.y, lastMouseX - origin.x)
-        const endAngle = Math.atan2(mouseY - origin.y, mouseX - origin.x)
-        this.rotateAngle += Math.round((endAngle - startAngle) * 180 / Math.PI)
+        const lastAngle = Math.atan2(lastMouseY - origin.y, lastMouseX - origin.x)
+        const currentAngle = Math.atan2(mouseY - origin.y, mouseX - origin.x)
+        this.rotateAngle += Math.round((currentAngle - lastAngle) * 180 / Math.PI)
         this.$emit('rotating', this.rotateAngle)
       }
     },

@@ -8,8 +8,10 @@ import calcStyle from '@/filters/calc-style.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'animate.css'
 import '@/assets/css/swiper.css'
-import '@/styles/ui.scss'
+import '@/assets/styles/ui.scss'
 import UIComps from '@/components/ui/index.js'
+import flexible from '@/utils/lib-flexible.js'
+import { isMobile } from '@/utils/index.js'
 
 Vue.use(ElementUI)
 
@@ -22,6 +24,16 @@ Object.keys(UIComps).forEach((name) => {
 Vue.filter('calcStyle', calcStyle)
 
 Vue.config.productionTip = false
+
+if (isMobile) {
+  document.body.classList.add('is-mobile')
+  router.push('/mobile')
+  flexible()
+}
+
+// window.addEventListener('resize', () => {
+
+// })
 
 /* eslint-disable no-new */
 new Vue({

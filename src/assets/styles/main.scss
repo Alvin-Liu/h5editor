@@ -10,12 +10,55 @@ body {
   background-color: #d0cfd8;
 }
 
+// 竖屏
+@media screen and (orientation:portrait) {
+  .is-mobile .landscape-show {
+    display: none!important;
+  }
+}
+.landscape-show {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    text-align: center;
+  }
+}
+// 横屏
+@media screen and (orientation:landscape) {
+  .is-mobile #app {
+    display: none!important;
+  }
+  .is-mobile .landscape-show {
+    display: block!important;
+  }
+}
+
 #app {
   position: relative;
   height: 100%;
   overflow: hidden
 }
-
+#mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .comp {
+    position: absolute !important;
+  }
+}
 .s-bg-main {
   background-color: $main_color;
 }
@@ -50,7 +93,7 @@ body {
   z-index: 200;
   width: 30px;
   height: 30px;
-  background-image: url(../assets/bgmBtn-fbd2dc.svg);
+  background-image: url(../bgmBtn-fbd2dc.svg);
   background-size: contain;
   background-repeat: no-repeat;
   &.rotate {

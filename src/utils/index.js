@@ -1,4 +1,4 @@
-// 简单深拷贝，不考虑function、Date
+// 简单json数据深拷贝
 export const deepClone = (obj) => {
   if (typeof obj !== 'object' || obj === null) {
     return obj
@@ -11,6 +11,8 @@ export const deepClone = (obj) => {
   }
   return newObj
 }
+
+export const isMobile = /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
 
 export const local = {
   set (key, value) {
