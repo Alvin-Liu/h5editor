@@ -10,16 +10,7 @@
           backgroundColor: page.css.bgc,
           backgroundImage: 'url(' + page.css.bgi + ')'
         }"></div>
-<!--       <div v-for="comp in page.comps">
-        <CompLists 
-          @click="handleClick(comp)"
-          @dblclick="handleDblclick"
-          :compid="comp.id"
-          class="comp"
-          :name="comp.name"
-        />
-      </div> -->
-      <VueDRR
+      <vue-drr
         v-for="comp in page.comps"
         :w="comp.css.w"
         :h="comp.css.h"
@@ -33,20 +24,20 @@
         @resizing="handleResizing"
         @rotating="handleRotating"
         :key="comp.id">
-        <CompLists 
+        <comp-lists 
           @click="handleClick(comp)"
           @dblclick="handleDblclick"
           :compid="comp.id"
           class="comp"
           :name="comp.name"
         />
-      </VueDRR>
+      </vue-drr>
     </div>
   </div>
 </template>
 
 <script>
-import VueDRR from '@/libs/vue-drr'
+import vueDrr from 'vue-drr'
 import BaseComps from '@/components/index.js'
 
 const BASE_COMP_NAME = 'Base'
@@ -114,7 +105,7 @@ export default {
     }
   },
   components: {
-    VueDRR,
+    vueDrr,
     CompLists: {
       props: {
         name: {

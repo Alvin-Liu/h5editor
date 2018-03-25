@@ -1,7 +1,7 @@
 <template>
   <div class="g-wrap">
     <div class="g-mn">
-      <TheCompLists />
+      <the-compLists />
     </div>
     <div class="g-sd fl">
       <a href="/" class="logo">H5EDITOR</a>

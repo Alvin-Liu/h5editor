@@ -1,7 +1,7 @@
 import fetch from './fetch.js'
 import Mock from 'mockjs'
 
-const Random = Mock.Random
+// const Random = Mock.Random
 
 const IMG_LISTS = [
   'static/images/bg/1.jpg',
@@ -30,18 +30,20 @@ const USER_BGM_LISTS = [
   'http://res1.eqh5.com/store/95a36241028fc154e65f08da936d6ab8.mp3'
 ]
 
-Random.extend({
-  material: function () {
-    return this.pick(IMG_LISTS)
-  }
-})
+// Random.extend({
+//   material: function () {
+//     return this.pick(IMG_LISTS)
+//   }
+// })
 
 export const getPublicMaterials = () => {
   return fetch(Mock.mock({
     'lists|4-10': [{
       'id': '@id',
+      'sortid|+1': 0,
       'url': function () {
-        return Random.material()
+        // return Random.material()
+        return IMG_LISTS[this.sortid]
       },
       'name': '@ctitle(2,4)'
     }]
@@ -52,8 +54,10 @@ export const getUserMaterials = () => {
   return fetch(Mock.mock({
     'lists|1-3': [{
       'id': '@id',
+      'sortid|+1': 0,
       'url': function () {
-        return Random.material()
+        // return Random.material()
+        return IMG_LISTS[this.sortid]
       },
       'name': '@ctitle(2,4)'
     }]

@@ -1,27 +1,27 @@
 <template>
   <el-container id="view">
     <el-header class="s-bg-main g-hd" height="auto">
-      <TheTopBar />
+      <the-topBar />
     </el-header>
     <el-container>
       <el-aside>
-        <ThePropManage />
+        <the-prop-manage />
       </el-aside>
       <!-- 编辑视图面板 -->
       <el-main id="workspace">
         <div class="m-simulator work-part">
           <div class="wrap">
-            <TheContainer />
+            <the-container />
           </div>
         </div>
       </el-main>
       <el-aside>
-        <ThePageManage />
+        <the-page-manage />
       </el-aside>
       <!-- 图片选取 -->
-      <PickImage />
+      <pick-image />
       <!-- 背景乐选取 -->
-      <PickBgMusic />
+      <pick-bg-music />
     </el-container>
   </el-container>
 </template>

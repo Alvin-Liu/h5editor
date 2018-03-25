@@ -16,7 +16,7 @@
               backgroundColor: page.css.bgc,
               backgroundImage: 'url(' + page.css.bgi + ')'
             }"></div>
-          <CompLists 
+          <comp-lists 
             v-for="comp in page.comps"
             :compid="comp.id"
             class="comp animated"
