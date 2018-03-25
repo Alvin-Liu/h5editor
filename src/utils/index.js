@@ -1,3 +1,5 @@
+export { default as flexible } from './lib-flexible.js'
+
 // 简单json数据深拷贝
 export const deepClone = (obj) => {
   if (typeof obj !== 'object' || obj === null) {
@@ -10,6 +12,21 @@ export const deepClone = (obj) => {
     }
   }
   return newObj
+}
+
+// 节流
+export const throttle = (func, wait) => {
+  let context, args
+  let previous = 0
+  return () => {
+    let now = Date.now()
+    context = this
+    args = arguments
+    if (now - previous > wait) {
+      previous = now
+      func.apply(context, args)
+    }
+  }
 }
 
 export const isMobile = /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)

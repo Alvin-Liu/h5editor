@@ -10,8 +10,7 @@ import 'animate.css'
 import '@/assets/css/swiper.css'
 import '@/assets/styles/ui.scss'
 import UIComps from '@/components/ui/index.js'
-import flexible from '@/utils/lib-flexible.js'
-import { isMobile } from '@/utils/index.js'
+import { isMobile, flexible } from '@/utils/index.js'
 
 Vue.use(ElementUI)
 
@@ -28,12 +27,12 @@ Vue.config.productionTip = false
 if (isMobile) {
   document.body.classList.add('is-mobile')
   router.push('/mobile')
-  flexible()
+  flexible.init()
+  store.commit('SET_MOBILE', {
+    isMobile: true,
+    rem: flexible.rem
+  })
 }
-
-// window.addEventListener('resize', () => {
-
-// })
 
 /* eslint-disable no-new */
 new Vue({

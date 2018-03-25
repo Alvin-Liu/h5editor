@@ -29,6 +29,10 @@ export default new Vuex.Store({
     },
     h5Config: {
       bgm: ''
+    },
+    mobile: {
+      isMobile: false,
+      rem: null
     }
   },
   getters: {
@@ -42,7 +46,22 @@ export default new Vuex.Store({
       const userData = localStorage.getItem(SAVE_KEY_NAME)
       if (userData) {
         try {
-          const curUserData = JSON.parse(userData)
+          const mobile = state.mobile
+          let curUserData
+          if (mobile.isMobile) {
+            const pxRegExp = /\b(\d+(\.\d+)?)px\b/
+            curUserData = JSON.parse(userData, (key, value) => {
+              if (typeof value === 'string' && pxRegExp.test(value)) {
+                return value.replace(pxRegExp, ($0, $1) => {
+                  const val = parseFloat($1) / mobile.rem
+                  return val + 'rem'
+                })
+              }
+              return value
+            })
+          } else {
+            curUserData = JSON.parse(userData)
+          }
           // 避免数据调整造成的错误，旧版本直接舍弃
           if (curUserData.versior && (curUserData.versior >= state.versior)) {
             const pages = curUserData.pages
@@ -117,6 +136,9 @@ export default new Vuex.Store({
     },
     [types.SET_H5_CONFIG] (state, config) {
       Object.assign(state.h5Config, config)
+    },
+    [types.SET_MOBILE] (state, mobileConfig) {
+      Object.assign(state.mobile, mobileConfig)
     }
   },
   modules: {

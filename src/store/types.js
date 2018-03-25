@@ -5,6 +5,7 @@ export const TOGGLE_COMP = 'TOGGLE_COMP'
 
 // h5
 export const SET_H5_CONFIG = 'SET_H5_CONFIG'
+export const SET_MOBILE = 'SET_MOBILE'
 
 // 页面
 export const ADD_PAGE = 'ADD_PAGE'

@@ -5,6 +5,8 @@ import {
   BORDER_STYLES,
   PATTERN_MATCH
 } from '@/config/style-match.js'
+import { isMobile } from '@/utils/index.js'
+// import { isMobile, flexible } from '@/utils/index.js'
 
 const getCssObj = (key, value) => {
   const handler = {
@@ -33,6 +35,7 @@ const getCssObj = (key, value) => {
   const handlerValue = handler[key] && handler[key]()
   return handlerValue || {}
 }
+// const BASE_RATIO = 750 / 320
 
 export default (css, ...filterProps) => {
   if (!css || typeof css !== 'object') {
@@ -53,7 +56,9 @@ export default (css, ...filterProps) => {
     // PATTERN_MATCH中有对应的
     if (propName) {
       if (typeof propName === 'object') {
-        newCss[propName.value] = propValue + propName.unit
+        newCss[propName.value] = isMobile
+          ? propValue / 32 + 'rem'
+          : propValue + propName.unit
       } else {
         newCss[propName] = propValue
       }

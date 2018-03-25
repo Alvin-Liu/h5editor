@@ -21,6 +21,12 @@ if (isIPhone) {
 }
 const scale = 1 / dpr
 
+let width = docEl.getBoundingClientRect().width
+if (width / dpr > 540) {  // 大于540就默认不属于移动端的宽度范围
+  width = 540 * dpr
+}
+const rem = width / 10
+
 const setViewport = () => {
   docEl.setAttribute('data-dpr', dpr)
 
@@ -35,36 +41,21 @@ const setViewport = () => {
     doc.write(wrap.innerHTML)
   }
 }
-const refreshRem = () => {
-  let width = docEl.getBoundingClientRect().width
-  if (width / dpr > 540) {  // 大于540就默认不属于移动端的宽度范围
-    width = 540 * dpr
-  }
-  const rem = width / 10
-  docEl.style.fontSize = rem + 'px'
-}
 
-export default () => {
-  setViewport()
-  refreshRem()
-
-  let tid
-  win.addEventListener('resize', function () {
-    clearTimeout(tid)
-    tid = setTimeout(refreshRem, 300)
-  }, false)
-  win.addEventListener('pageshow', function (e) {
-    if (e.persisted) {
-      clearTimeout(tid)
-      tid = setTimeout(refreshRem, 300)
-    }
-  }, false)
-
-  if (doc.readyState === 'complete') {
-    doc.body.style.fontSize = 12 * dpr + 'px'
-  } else {
-    doc.addEventListener('DOMContentLoaded', function (e) {
+const flexible = {
+  init () {
+    setViewport()
+    docEl.style.fontSize = rem + 'px'
+    if (doc.readyState === 'complete') {
       doc.body.style.fontSize = 12 * dpr + 'px'
-    }, false)
-  }
+    } else {
+      doc.addEventListener('DOMContentLoaded', (e) => {
+        doc.body.style.fontSize = 12 * dpr + 'px'
+      }, false)
+    }
+  },
+  rem: rem,
+  dpr: dpr
 }
+
+export default flexible
