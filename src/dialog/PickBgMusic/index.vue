@@ -53,16 +53,19 @@ export default {
     handleClick () {
       const activeName = this.activeName
       if (activeName === 'user' && this.hasFetchData === false) {
-        getUserBGMs().then((res) => {
-          this.hasFetchData = true
-          this.userBgmLists = res.lists
-        }).catch(() => {
-          // this.userBgmStatus = false
-          this.$notify.error({
-            title: '错误',
-            message: '背景乐列表获取失败'
-          })
-        })
+        getUserBGMs().then(
+          (res) => {
+            this.hasFetchData = true
+            this.userBgmLists = res.lists
+          },
+          (err) => {
+            // this.userBgmStatus = false
+            this.$notify.error({
+              title: '错误',
+              message: err
+            })
+          }
+        )
       }
     },
     handlePlay (bgm) {
@@ -93,15 +96,18 @@ export default {
   },
   mounted () {
     this.hasFetchData = false
-    getPublicBGMs().then((res) => {
-      this.publicBGMs = res.lists
-    }).catch(() => {
-      // this.publicBgmStatus = false
-      this.$notify.error({
-        title: '错误',
-        message: '图片列表获取失败'
-      })
-    })
+    getPublicBGMs().then(
+      (res) => {
+        this.publicBGMs = res.lists
+      },
+      (err) => {
+        // this.publicBgmStatus = false
+        this.$notify.error({
+          title: '错误',
+          message: err
+        })
+      }
+    )
   },
   components: {
     bgmLists: lists

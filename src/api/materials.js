@@ -37,7 +37,7 @@ const USER_BGM_LISTS = [
 // })
 
 export const getPublicMaterials = () => {
-  return fetch(Mock.mock({
+  const data = Mock.mock({
     'lists|4-10': [{
       'id': '@id',
       'sortid|+1': 0,
@@ -47,11 +47,12 @@ export const getPublicMaterials = () => {
       },
       'name': '@ctitle(2,4)'
     }]
-  }))
+  })
+  return fetch(data, '图片列表获取失败')
 }
 
 export const getUserMaterials = () => {
-  return fetch(Mock.mock({
+  const data = Mock.mock({
     'lists|1-3': [{
       'id': '@id',
       'sortid|+1': 0,
@@ -61,11 +62,12 @@ export const getUserMaterials = () => {
       },
       'name': '@ctitle(2,4)'
     }]
-  }))
+  })
+  return fetch(data, '图片列表获取失败')
 }
 
 export const getPublicBGMs = () => {
-  return fetch(Mock.mock({
+  const data = Mock.mock({
     'lists|4-6': [{
       'id': '@id',
       'sortid|+1': 0,
@@ -76,11 +78,12 @@ export const getPublicBGMs = () => {
       'type': 'mp3',
       'origin': '易企秀'
     }]
-  }))
+  })
+  return fetch(data, '背景乐列表获取失败')
 }
 
 export const getUserBGMs = () => {
-  return fetch(Mock.mock({
+  const data = Mock.mock({
     'lists|1-2': [{
       'id': '@id',
       'sortid|+1': 0,
@@ -91,5 +94,6 @@ export const getUserBGMs = () => {
       'type': 'mp3',
       'origin': '易企秀'
     }]
-  }))
+  })
+  return fetch(data, '背景乐列表获取失败')
 }

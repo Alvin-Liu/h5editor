@@ -50,16 +50,19 @@ export default {
     handleClick () {
       const activeName = this.activeName
       if (activeName === 'user' && this.hasFetchData === false) {
-        getUserMaterials().then((res) => {
-          this.hasFetchData = true
-          this.userImgLists = res.lists
-        }).catch(() => {
-          // this.userImgStatus = false
-          this.$notify.error({
-            title: '错误',
-            message: '图片列表获取失败'
-          })
-        })
+        getUserMaterials().then(
+          (res) => {
+            this.hasFetchData = true
+            this.userImgLists = res.lists
+          },
+          (err) => {
+            // this.userImgStatus = false
+            this.$notify.error({
+              title: '错误',
+              message: err
+            })
+          }
+        )
       }
     },
     pick (img) {
@@ -76,15 +79,17 @@ export default {
   },
   mounted () {
     this.hasFetchData = false
-    getPublicMaterials().then((res) => {
-      this.publicImgLists = res.lists
-    }).catch(() => {
-      // this.publicImgStatus = false
-      this.$notify.error({
-        title: '错误',
-        message: '图片列表获取失败'
-      })
-    })
+    getPublicMaterials().then(
+      (res) => {
+        this.publicImgLists = res.lists
+      },
+      (err) => {
+        this.$notify.error({
+          title: '错误',
+          message: err
+        })
+      }
+    )
   },
   components: {
     imgLists: lists
