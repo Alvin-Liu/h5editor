@@ -16,14 +16,17 @@
               backgroundColor: page.css.bgc,
               backgroundImage: 'url(' + page.css.bgi + ')'
             }"></div>
-          <comp-lists 
+          <div
             v-for="comp in page.comps"
-            :compid="comp.id"
-            class="comp animated"
+            class="animated"
             :class="{[animations[comp.anim.type]['class']]: activePage === idx}"
-            :name="comp.name"
-            :key="comp.id"
-          />
+            :key="comp.id">
+            <comp-lists
+              :comp="comp"
+              :style="comp.css | calcStyle"
+              class="comp"
+            />
+          </div>
         </swiper-slide>
       </swiper>
     </div>
@@ -89,20 +92,20 @@ export default {
     swiperSlide,
     CompLists: {
       props: {
-        name: {
-          type: String,
-          required: true
-        },
-        compid: {
-          type: [String, Number],
+        comp: {
+          type: Object,
           required: true
         }
       },
       render (h) {
-        const module = BaseComps[BASE_COMP_NAME + this.name]
+        const { name, id, css } = this.comp
+        const module = BaseComps[BASE_COMP_NAME + name]
         return h(module, {
           props: {
-            compid: this.compid
+            compid: id
+          },
+          style: {
+            transform: `rotate(${css.rotate}deg)`
           }
         })
       }

@@ -29,6 +29,7 @@
           @dblclick="handleDblclick"
           :compid="comp.id"
           class="comp"
+          :style="comp.css | calcStyle"
           :name="comp.name"
         />
       </vue-drr>

@@ -1,5 +1,5 @@
 <template>
-  <div class="c-text" :style="cm.css | calcStyle">
+  <div class="c-text">
     <a :style="linkStyle | calcStyle" href="#" v-html="cm.props.text"></a>
   </div>
 </template>
