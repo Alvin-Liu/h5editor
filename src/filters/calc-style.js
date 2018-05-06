@@ -62,6 +62,8 @@ export default (css, ...filterProps) => {
       } else {
         newCss[propName] = propValue
       }
+    } else if (key === 'rotate') {
+      newCss['transform'] = 'rotate(' + propValue + 'deg)'
     } else {
       Object.assign(newCss, getCssObj(key, propValue))
     }
