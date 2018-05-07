@@ -25,6 +25,10 @@ const router = new VueRouter({
       path: '/mobile',
       name: 'mobile',
       component: mobile
+    },
+    {
+      path: '*',
+      component: index
     }
   ]
 })
