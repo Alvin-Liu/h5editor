@@ -29,7 +29,7 @@
           @dblclick="handleDblclick"
           :compid="comp.id"
           class="comp"
-          :style="comp.css | calcStyle"
+          :style="comp.css | calcStyle('rotate')"
           :name="comp.name"
         />
       </vue-drr>
