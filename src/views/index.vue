@@ -21,11 +21,9 @@
 
       <the-prop-manage slot="left" />
 
-      <div class="m-simulator work-part" slot="main">
-        <div class="wrap">
-          <the-container />
-        </div>
-      </div>
+      <ly-mobile slot="main">
+        <the-container />
+      </ly-mobile>
 
       <the-page-manage slot="right" />
 
@@ -62,6 +60,7 @@ export default {
   components: {
     lyHeader: () => import('@/layouts/lyHeader'),
     lyMain: () => import('@/layouts/lyMain'),
+    lyMobile: () => import('@/layouts/lyMobile'),
     ThePageManage: () => import('@/modules/ThePageManage'),
     TheContainer: () => import('@/modules/TheContainer'),
     ThePropManage: () => import('@/modules/ThePropManage'),
