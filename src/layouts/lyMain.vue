@@ -17,8 +17,3 @@ export default {
   name: 'lyMain'
 }
 </script>
-<style lang="scss">
-  .ly-mn {
-    
-  }
-</style>

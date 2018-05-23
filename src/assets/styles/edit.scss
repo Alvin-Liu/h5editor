@@ -10,6 +10,25 @@
   @include middle-center
 }
 
+$view_width: 320px;
+$view_height: 486px;
+.m-simulator {
+  position: relative;
+  width: $view_width + 8px;
+  height: $view_height + 74px;
+  background-image: url(../phonewhite-7a04c3.svg);
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  border-radius: 40px;
+  > .wrap {
+    position: absolute;
+    top: 37px;
+    left: 4px;
+    width: $view_width;
+    height: $view_height;
+    background-color: #fff
+  }
+}
 
 .panel-header {
   color: #fff;
