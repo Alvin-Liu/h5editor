@@ -1,44 +1,5 @@
-// 展示编辑区域
-.m-simulator {
-  position: relative;
-  width: $view_width + 8px;
-  height: $view_height + 74px;
-  background-image: url(../phonewhite-7a04c3.svg);
-  background-repeat: no-repeat;
-  box-shadow: 0 2px 8px rgba(0,0,0,.15);
-  border-radius: 40px;
-  > .wrap {
-    position: absolute;
-    top: 37px;
-    left: 4px;
-    width: $view_width;
-    height: $view_height;
-    background-color: #fff
-  }
-}
-
-.wrap-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-origin: content-box;
-  background-position: 50% 50%;
-}
-
 #view {
   height: 100%;
-}
-
-// preview
-#preview {
-  @include middle-center;
-  .comp {
-    position: absolute !important;
-  }
 }
 
 // workspace
