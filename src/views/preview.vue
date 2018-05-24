@@ -124,6 +124,9 @@ export default {
     overflow: hidden;
     position: relative;
     height: 100%;
+    .comp {
+      position: absolute
+    }
   }
 
   .wrap-bg {
