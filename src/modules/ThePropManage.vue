@@ -18,6 +18,7 @@
 <script>
 import CompConfigs from '@/components/config.js'
 import PagePropConfig from '@/dialog/PagePropConfig.vue'
+
 export default {
   name: 'ThePropManage',
   computed: {

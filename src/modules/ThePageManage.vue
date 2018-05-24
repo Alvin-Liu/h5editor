@@ -1,7 +1,7 @@
 <template>
   <ly-panel class="page-manage">
     <div slot="header">页面管理</div>
-    <ul class="page-lists f-cb">
+    <ul class="u-lst f-cb">
       <li
         v-for="(itm, idx) in pages"
         :keys="idx"
@@ -62,17 +62,17 @@ export default {
 
   .page-manage {
     border-top: 1px solid #666;
-  }
-  .page-lists {
-    li {
-      padding: 15px;
-      border: 1px solid $main_border_color;
-      margin-bottom: 10px;
-      color: $font_color;
-      cursor: pointer;
-      &.active {
-        color: #fff;
-        background-color: #59c7f9;
+    .u-lst {
+      > li {
+        padding: 15px;
+        border: 1px solid $main_border_color;
+        margin-bottom: 10px;
+        color: $font_color;
+        cursor: pointer;
+        &.active {
+          color: #fff;
+          background-color: #59c7f9;
+        }
       }
     }
   }
