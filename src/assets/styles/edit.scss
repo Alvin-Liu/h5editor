@@ -35,20 +35,6 @@ $view_height: 486px;
   padding: 15px;
 }
 
-.page-lists {
-  li {
-    padding: 15px;
-    border: 1px solid $main_border_color;
-    margin-bottom: 10px;
-    color: $font_color;
-    cursor: pointer;
-    &.active {
-      color: #fff;
-      background-color: #59c7f9;
-    }
-  }
-}
-
 #panel {
   height: 100%;
 }

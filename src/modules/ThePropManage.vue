@@ -1,10 +1,10 @@
 <template>
-  <div class="props-panel" v-show="propsPanel.status">
-    <div class="props-title">
+  <ly-panel class="prop-manage" v-show="propsPanel.status">
+    <div slot="header">
       设置面板
-      <i class="f-fr el-icon-close props-close" @click="$store.commit('CLOSE_PROPS_PANEL')"></i>
+      <i class="f-fr el-icon-close u-btn-close" @click="$store.commit('CLOSE_PROPS_PANEL')"></i>
     </div>
-    <div class="props-body">
+    <div class="mn">
       <keep-alive>
         <component 
           :is="propsPanel.name"
@@ -12,7 +12,7 @@
         </component>
       </keep-alive>
     </div>
-  </div>
+  </ly-panel>
 </template>
 
 <script>
@@ -30,7 +30,25 @@ export default {
   },
   components: {
     ...CompConfigs,
+    lyPanel: () => import('@/layouts/lyPanel'),
     PagePropConfig
   }
 }
 </script>
+<style lang="scss">
+  .prop-manage {
+    position: absolute;
+    top: 15vh;
+    left: 10px;
+    width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+    .u-btn-close {
+      color: #ddd;
+      cursor: pointer;
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+</style>
