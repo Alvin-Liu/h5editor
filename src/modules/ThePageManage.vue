@@ -1,6 +1,5 @@
 <template>
-  <ly-panel class="page-manage">
-    <div slot="header">页面管理</div>
+  <ly-panel class="page-manage" header="页面管理">
     <ul class="u-lst f-cb">
       <li
         v-for="(itm, idx) in pages"

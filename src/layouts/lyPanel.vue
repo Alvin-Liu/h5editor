@@ -1,7 +1,8 @@
 <template>
   <div class="ly-pn">
     <div class="hd" height="auto" :style="{ backgroundColor: panelColor }">
-      <slot name="header"></slot>
+      {{ header }}
+      <slot v-if="!header" name="header"></slot>
     </div>
     <div class="mn">
       <slot></slot>
@@ -13,6 +14,7 @@
 export default {
   name: 'lyMain',
   props: {
+    header: String,
     panelColor: {
       type: String,
       default: '#31364a'
