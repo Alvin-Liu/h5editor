@@ -29,3 +29,26 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .bgm-lists {
+    > li {
+      padding: 5px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      > a {
+        display: block;
+        padding: 0 5px;
+        font-size: 14px;
+      }
+      &:nth-child(2n + 1) {
+        background-color: #f7f7f7;
+      }
+      &:hover {
+        background-color: #1593ff;
+      }
+    }
+    .origin {
+      margin-left: 20px;
+    }
+  }
+</style>

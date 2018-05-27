@@ -9,8 +9,10 @@
     </li>
   </ul>
 </template>
+
 <script>
 import { ANI_NAME } from '@/config/animation-match.js'
+
 export default {
   name: 'UIAnimate',
   props: {
@@ -49,3 +51,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .m-animations {
+    > li {
+      float: left;
+      width: 46%;
+      margin: 10px 0;
+      text-align: center;
+      &:nth-child(2n) {
+        margin-left: 2%;
+      }
+    }
+  }
+</style>

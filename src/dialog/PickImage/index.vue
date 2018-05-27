@@ -26,6 +26,7 @@
 <script>
 import lists from './lists.vue'
 import { getPublicMaterials, getUserMaterials } from '@/api/materials'
+
 export default {
   name: 'PickImage',
   data () {

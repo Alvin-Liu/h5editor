@@ -21,11 +21,10 @@
     </div>
   </div>
 </template>
-<script>
 
-import {
-  BORDER_STYLES
-} from '@/config/style-match.js'
+<script>
+import { BORDER_STYLES } from '@/config/style-match.js'
+
 export default {
   name: 'UIBorder',
   props: {
@@ -60,3 +59,30 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .item-group {
+    width: 200px;
+    margin: 0 auto;
+    > .item {
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    label {
+      display: inline-block;
+      width: 60px;
+      margin-right: 10px;
+      text-align: right;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+    input {
+      width: 100px;
+      padding: 5px 10px;
+    }
+    select {
+      min-width: 100px;
+      padding: 5px 10px;
+    }
+  }
+</style>

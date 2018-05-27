@@ -74,3 +74,19 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .item-page-background {
+    .img-box {
+      overflow: hidden;
+      width: 100%;
+      height: 180px;
+      margin: 10px 0;
+      border: 1px dashed #ccc;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-origin: content-box;
+      background-position: 50% 50%;
+    }
+  }
+</style>

@@ -29,3 +29,44 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  // img-pick
+  .img-lists {
+    overflow: hidden;
+    height: 40vh;
+    overflow: auto;
+    > li {
+      float: left;
+      width: 25%;
+      padding: 5px;
+    }
+    .imgbox {
+      display: table;
+      position: relative;
+      border: 1px solid #eee;
+      width: 100%;
+      height: 129px;
+      text-align: center;
+      > .box {
+        vertical-align: middle;
+        display: table-cell;
+        img {
+          width: auto;
+          max-width: 100%;
+          max-height: 119px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 36px;
+          color: green;
+        }
+      }
+    }
+  }
+</style>

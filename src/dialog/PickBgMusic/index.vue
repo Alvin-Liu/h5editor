@@ -114,3 +114,12 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .bgm-dialog {
+    .bgm-active {
+      margin-top: 30px;
+      text-align: right;
+      font-size: 12px;
+    }
+  }
+</style>

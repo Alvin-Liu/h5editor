@@ -22,3 +22,13 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .c-image {
+    a {
+      display: block;
+      img {
+        width: 100%;
+      }
+    }
+  }
+</style>
