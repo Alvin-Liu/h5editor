@@ -2,7 +2,7 @@
   <div
     :compid="comp.id"
     class="comp"
-    :style="comp.css | calcStyle('rotate')"
+    :style="compStyle | calcStyle"
     :is="BASE_COMP_NAME + comp.name">
   </div>
 </template>
@@ -18,6 +18,24 @@ export default {
     comp: {
       type: Object,
       required: true
+    },
+    type: String
+  },
+  data () {
+    return {
+      isEdit: this.type === 'edit'
+    }
+  },
+  computed: {
+    compStyle () {
+      const css = this.comp.css
+      if (this.isEdit) {
+        return {
+          ...css,
+          rotate: null
+        }
+      }
+      return css
     }
   },
   created () {

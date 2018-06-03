@@ -61,9 +61,9 @@ export default {
     lyHeader: () => import('@/layouts/lyHeader'),
     lyMain: () => import('@/layouts/lyMain'),
     lyMobile: () => import('@/layouts/lyMobile'),
-    ThePageManage: () => import('@/modules/ThePageManage'),
-    TheContainer: () => import('@/modules/TheContainer'),
-    ThePropManage: () => import('@/modules/ThePropManage'),
+    ThePageManage: () => import('@/views/modules/ThePageManage'),
+    TheContainer: () => import('@/views/modules/TheContainer'),
+    ThePropManage: () => import('@/views/modules/ThePropManage'),
     PickImage: () => import('@/dialog/PickImage/index'),
     PickBgMusic: () => import('@/dialog/PickBgMusic/index')
   }

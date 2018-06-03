@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { BORDER_STYLES } from '@/config/style-match.js'
+import { BORDER_STYLES } from '@/const/style-match.js'
 
 export default {
   name: 'UIBorder',

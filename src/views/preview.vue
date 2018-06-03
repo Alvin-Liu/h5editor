@@ -32,8 +32,8 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import ComponentRenderer from '@/modules/ComponentRenderer'
-import { ANI_NAME } from '@/config/animation-match.js'
+import ComponentRenderer from '@/views/modules/ComponentRenderer'
+import { ANI_NAME } from '@/const/animation-match.js'
 import lyMobile from '@/layouts/lyMobile'
 
 export default {

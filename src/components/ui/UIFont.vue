@@ -33,7 +33,7 @@
 import {
   FONT_FAMILYS,
   FONT_SIZES
-} from '@/config/style-match.js'
+} from '@/const/style-match.js'
 export default {
   name: 'UIFont',
   props: {

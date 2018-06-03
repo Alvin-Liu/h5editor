@@ -26,7 +26,7 @@
         @click.native="handleClick(comp)"
         @dblclick.native="handleDblclick(comp.name)"
         :key="comp.id">
-        <component-renderer :comp="comp"></component-renderer>
+        <component-renderer :comp="comp" type="edit"></component-renderer>
       </vue-drr>
     </div>
   </div>
@@ -34,7 +34,7 @@
 
 <script>
 import vueDrr from 'vue-drr'
-import ComponentRenderer from '@/modules/ComponentRenderer'
+import ComponentRenderer from '@/views/modules/ComponentRenderer'
 
 const BASE_COMP_CONFIG_NAME = 'Config'
 

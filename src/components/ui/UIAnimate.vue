@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ANI_NAME } from '@/config/animation-match.js'
+import { ANI_NAME } from '@/const/animation-match.js'
 
 export default {
   name: 'UIAnimate',

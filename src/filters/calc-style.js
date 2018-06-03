@@ -4,7 +4,7 @@ import {
   FONT_SIZES,
   BORDER_STYLES,
   PATTERN_MATCH
-} from '@/config/style-match.js'
+} from '@/const/style-match.js'
 import { isMobile } from '@/utils/index.js'
 // import { isMobile, flexible } from '@/utils/index.js'
 
