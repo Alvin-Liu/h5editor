@@ -23,15 +23,10 @@
         @dragging="handleDragging"
         @resizing="handleResizing"
         @rotating="handleRotating"
+        @click.native="handleClick(comp)"
+        @dblclick.native="handleDblclick(comp.name)"
         :key="comp.id">
-        <comp-lists 
-          @click="handleClick(comp)"
-          @dblclick="handleDblclick"
-          :compid="comp.id"
-          class="comp"
-          :style="comp.css | calcStyle('rotate')"
-          :name="comp.name"
-        />
+        <component-renderer :comp="comp"></component-renderer>
       </vue-drr>
     </div>
   </div>
@@ -39,9 +34,8 @@
 
 <script>
 import vueDrr from 'vue-drr'
-import BaseComps from '@/components/index.js'
+import ComponentRenderer from '@/modules/ComponentRenderer'
 
-const BASE_COMP_NAME = 'Base'
 const BASE_COMP_CONFIG_NAME = 'Config'
 
 export default {
@@ -107,38 +101,7 @@ export default {
   },
   components: {
     vueDrr,
-    CompLists: {
-      props: {
-        name: {
-          type: String,
-          required: true
-        },
-        compid: {
-          type: [String, Number],
-          required: true
-        }
-      },
-      render (h) {
-        const module = BaseComps[BASE_COMP_NAME + this.name]
-        return h(module, {
-          props: {
-            compid: this.compid
-          },
-          nativeOn: {
-            click: this.clickHandler,
-            dblclick: this.dblclickHandler
-          }
-        })
-      },
-      methods: {
-        clickHandler () {
-          this.$emit('click', this.name)
-        },
-        dblclickHandler () {
-          this.$emit('dblclick', this.name)
-        }
-      }
-    }
+    ComponentRenderer
   }
 }
 </script>

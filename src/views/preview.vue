@@ -22,11 +22,7 @@
             class="animated"
             :class="{[animations[comp.anim.type]['class']]: activePage === idx}"
             :key="comp.id">
-            <comp-lists
-              :comp="comp"
-              :style="comp.css | calcStyle"
-              class="comp"
-            />
+            <component-renderer :comp="comp"></component-renderer>
           </div>
         </swiper-slide>
       </swiper>
@@ -36,11 +32,9 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import BaseComps from '@/components'
+import ComponentRenderer from '@/modules/ComponentRenderer'
 import { ANI_NAME } from '@/config/animation-match.js'
 import lyMobile from '@/layouts/lyMobile'
-
-const BASE_COMP_NAME = 'Base'
 
 export default {
   name: 'Preview',
@@ -93,26 +87,7 @@ export default {
     swiper,
     swiperSlide,
     lyMobile,
-    CompLists: {
-      props: {
-        comp: {
-          type: Object,
-          required: true
-        }
-      },
-      render (h) {
-        const { name, id, css } = this.comp
-        const module = BaseComps[BASE_COMP_NAME + name]
-        return h(module, {
-          props: {
-            compid: id
-          },
-          style: {
-            transform: `rotate(${css.rotate}deg)`
-          }
-        })
-      }
-    }
+    ComponentRenderer
   }
 }
 </script>
