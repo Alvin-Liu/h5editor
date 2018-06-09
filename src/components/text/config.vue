@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName">
+  <!-- <el-tabs v-model="activeName">
     <el-tab-pane label="动画" name="animate">
       <UIAnimate :value="cm.anim" @change="updateAni" />
     </el-tab-pane>
@@ -36,13 +36,29 @@
         </el-collapse-item>
       </el-collapse>
     </el-tab-pane>
-  </el-tabs>
+  </el-tabs> -->
+  <form-renderer :content="cm"></form-renderer>
 </template>
 
 <script>
-import compConfig from '@/mixins/comp-config.js'
+// import compConfig from '@/mixins/comp-config.js'
+import formRenderer from '../form-renderer.vue'
 export default {
   name: 'textConfig',
-  mixins: [compConfig]
+  props: {
+    id: {
+      type: [String, Number],
+      required: true
+    }
+  },
+  computed: {
+    cm () {
+      return this.$store.getters.getCompConfigByCompid(this.id)
+    }
+  },
+  // mixins: [compConfig]
+  components: {
+    formRenderer
+  }
 }
 </script>

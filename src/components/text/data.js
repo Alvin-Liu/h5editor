@@ -13,16 +13,19 @@ export default () => {
       text: '这是文字'
     },
     css: {
-      t: 100,
-      l: 100,
-      w: 100,
-      h: 30,
+      base: {
+        t: 100,
+        l: 100,
+        w: 100,
+        h: 30,
+        br: 5,
+        rotate: 0
+      },
       bd: {
         w: 1,
         t: 1,
         c: '#fff'
       },
-      br: 5,
       ft: {
         s: 1,
         t: 1,
@@ -30,7 +33,6 @@ export default () => {
         c: '#333'
       },
       lh: 30,
-      rotate: 0,
       bgc: '#fff'
     }
   }
