@@ -30,6 +30,20 @@ const getCssObj = (key, value) => {
         'font-family': FONT_FAMILYS[value.t],
         'color': value.c
       }
+    },
+    base: () => {
+      let newCss = {}
+      Object.keys(value).forEach(k => {
+        const propName = PATTERN_MATCH[k]
+        if (typeof propName === 'object') {
+          newCss[propName.value] = isMobile
+            ? value[k] / 32 + 'rem'
+            : value[k] + propName.unit
+        } else {
+          newCss[propName] = value[k]
+        }
+      })
+      return newCss
     }
   }
   const handlerValue = handler[key] && handler[key]()

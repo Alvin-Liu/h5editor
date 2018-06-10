@@ -12,10 +12,10 @@
         }"></div>
       <vue-drr
         v-for="comp in page.comps"
-        :w="comp.css.w"
-        :h="comp.css.h"
-        :y="comp.css.t"
-        :x="comp.css.l"
+        :w="comp.css.w || comp.css.base.w"
+        :h="comp.css.h || comp.css.base.h"
+        :y="comp.css.t || comp.css.base.t"
+        :x="comp.css.l || comp.css.base.l"
         :minw="10"
         :minh="10"
         :angle="comp.css.rotate"

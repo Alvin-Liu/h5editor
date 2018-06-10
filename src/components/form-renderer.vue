@@ -5,7 +5,7 @@
     </el-tab-pane>
     <el-tab-pane label="样式" name="css" v-if="content.css">
       <el-collapse accordion>
-        <el-collapse-item title="尺寸与位置" name="1" class="h-from" v-if="content.css.base">
+        <el-collapse-item title="尺寸与位置" class="h-from" v-if="content.css.base">
           <UIBase :value="content.css.base" @change="updateCss"></UIBase>
         </el-collapse-item>
         <el-collapse-item title="边框" class="h-from" v-if="content.css.bd">
