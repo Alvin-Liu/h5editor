@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import vueDrr from 'vue-drr'
+import vueDrr from '@/containers/vue-drr'
 import ComponentRenderer from '@/views/modules/ComponentRenderer'
 
 const BASE_COMP_CONFIG_NAME = 'Config'
