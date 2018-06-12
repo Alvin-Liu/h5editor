@@ -1,4 +1,4 @@
-import CompDatas from '@/components/data.js'
+import CompDatas from '@/components/blocks/data.js'
 
 export const getRandomId = (radix = 10) => Date.now().toString(radix)
 

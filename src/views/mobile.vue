@@ -29,7 +29,7 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import ComponentRenderer from '@/views/modules/ComponentRenderer'
+import ComponentRenderer from '@/containers/component-renderer'
 import { ANI_NAME } from '@/const/animation-match.js'
 
 export default {

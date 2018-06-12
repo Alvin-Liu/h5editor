@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseComps from '@/components/index.js'
+import BaseComps from '@/components/blocks/index.js'
 
 const BASE_COMP_NAME = 'Base'
 

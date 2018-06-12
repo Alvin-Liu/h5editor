@@ -13,17 +13,19 @@ export default () => {
       src: './static/images/logo.png'
     },
     css: {
-      t: 0,
-      l: 0,
-      w: 200,
-      h: 200,
+      base: {
+        t: 100,
+        l: 100,
+        w: 100,
+        h: 100,
+        br: 5,
+        rotate: 0
+      },
       bd: {
         w: 1,
         t: 1,
         c: '#fff'
       },
-      br: 5,
-      rotate: 0,
       bgc: '#fff'
     }
   }

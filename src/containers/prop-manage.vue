@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import CompConfigs from '@/components/config.js'
-import PagePropConfig from '@/dialog/PagePropConfig.vue'
+import CompConfigs from '@/components/blocks/config.js'
+import PagePropConfig from '@/containers/page-prop-config.vue'
 
 export default {
-  name: 'ThePropManage',
+  name: 'PropManage',
   computed: {
     propsPanel () {
       return this.$store.getters.propsPanel
@@ -31,7 +31,7 @@ export default {
   },
   components: {
     ...CompConfigs,
-    lyPanel: () => import('@/layouts/lyPanel'),
+    lyPanel: () => import('@/layouts/ly-panel'),
     PagePropConfig
   }
 }

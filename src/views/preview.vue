@@ -32,9 +32,9 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import ComponentRenderer from '@/views/modules/ComponentRenderer'
+import ComponentRenderer from '@/containers/component-renderer'
 import { ANI_NAME } from '@/const/animation-match.js'
-import lyMobile from '@/layouts/lyMobile'
+import lyMobile from '@/layouts/ly-mobile'
 
 export default {
   name: 'Preview',

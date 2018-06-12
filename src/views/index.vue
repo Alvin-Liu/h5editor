@@ -19,19 +19,19 @@
     </ly-header>
     <ly-main class="g-mn">
 
-      <the-prop-manage slot="left" />
+      <prop-manage slot="left" />
 
       <ly-mobile slot="main">
         <the-container />
       </ly-mobile>
 
-      <the-page-manage slot="right" />
+      <page-manage slot="right" />
 
     </ly-main>
     <!-- 图片选取 -->
     <pick-image />
     <!-- 背景乐选取 -->
-    <pick-bg-music />
+    <pick-music />
   </div>
 </template>
 <script>
@@ -58,14 +58,14 @@ export default {
     }
   },
   components: {
-    lyHeader: () => import('@/layouts/lyHeader'),
-    lyMain: () => import('@/layouts/lyMain'),
-    lyMobile: () => import('@/layouts/lyMobile'),
-    ThePageManage: () => import('@/views/modules/ThePageManage'),
-    TheContainer: () => import('@/views/modules/TheContainer'),
-    ThePropManage: () => import('@/views/modules/ThePropManage'),
-    PickImage: () => import('@/dialog/PickImage/index'),
-    PickBgMusic: () => import('@/dialog/PickBgMusic/index')
+    lyHeader: () => import('@/layouts/ly-header'),
+    lyMain: () => import('@/layouts/ly-main'),
+    lyMobile: () => import('@/layouts/ly-mobile'),
+    PageManage: () => import('@/containers/page-manage'),
+    TheContainer: () => import('@/views/modules/the-container'),
+    PropManage: () => import('@/containers/prop-manage'),
+    PickImage: () => import('@/containers/pick-image/index'),
+    PickMusic: () => import('@/containers/pick-music/index')
   }
 }
 </script>

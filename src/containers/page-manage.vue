@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'ThePageManage',
+  name: 'PageManage',
   computed: {
     pages () {
       return this.$store.getters.pages
@@ -51,7 +51,7 @@ export default {
     }
   },
   components: {
-    lyPanel: () => import('@/layouts/lyPanel')
+    lyPanel: () => import('@/layouts/ly-panel')
   }
 }
 </script>

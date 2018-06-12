@@ -1,15 +1,15 @@
 <template>
   <el-tabs v-model="activeName">
     <el-tab-pane label="动画" name="anim" v-if="content.anim">
-      <UIAnimate :value="content.anim" @change="updateAni" />
+      <ui-animate :value="content.anim" @change="updateAni" />
     </el-tab-pane>
     <el-tab-pane label="样式" name="css" v-if="content.css">
       <el-collapse accordion>
         <el-collapse-item title="尺寸与位置" class="h-from" v-if="content.css.base">
-          <UIBase :value="content.css.base" @change="updateCss"></UIBase>
+          <ui-base :value="content.css.base" @change="updateCss" />
         </el-collapse-item>
         <el-collapse-item title="边框" class="h-from" v-if="content.css.bd">
-          <UIBorder :value="content.css.bd" @change="updateCss" />
+          <ui-border :value="content.css.bd" @change="updateCss" />
         </el-collapse-item>
       </el-collapse>
     </el-tab-pane>
@@ -17,8 +17,7 @@
 </template>
 
 <script>
-// import compConfig from '@/mixins/comp-config.js'
-import UIBase from './ui/UIBase.vue'
+import UiComponents from './ui/index.js'
 
 export default {
   name: 'formRenderer',
@@ -60,8 +59,6 @@ export default {
       })
     }
   },
-  components: {
-    UIBase
-  }
+  components: UiComponents
 }
 </script>
