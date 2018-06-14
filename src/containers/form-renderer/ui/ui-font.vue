@@ -1,32 +1,31 @@
 <template>
-  <div class="item-group m-ft f-vama">
-    <div class="item">
-      <label>字体:</label>
-      <select name="font-family" v-model.number="ft.type" @change="handleChange">
-        <option
+  <el-form ref="form" :model="ft" label-width="60px">
+    <el-form-item label="字体">
+      <el-select v-model.number="ft.type" placeholder="请选择">
+        <el-option
           v-for="(fm, key) in fms"
           :key="key"
+          :label="fm"
           :value="key">
-          {{ fm }}
-        </option>
-      </select>
-    </div>
-    <div class="item">
-      <label>字号:</label>
-      <select name="font-size" v-model.number="ft.size" @change="handleChange">
-        <option
+          {{$log(fm)}}
+        </el-option>
+      </el-select>
+      {{$log(fms)}}
+    </el-form-item>
+    <el-form-item label="字号">
+      <el-select v-model.number="ft.size" placeholder="请选择">
+        <el-option
           v-for="(fs, key) in fss"
           :key="key"
+          :label="fs"
           :value="key">
-          {{ fs }}
-        </option>
-      </select>
-    </div>
-    <div class="item">
-      <label>颜色:</label>
-      <el-color-picker v-model="ft.color" @change="handleChange" size="mini" />
-    </div>
-  </div>
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="颜色">
+      <el-color-picker v-model="ft.color" @change="handleChange" />
+    </el-form-item>
+  </el-form>
 </template>
 <script>
 

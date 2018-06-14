@@ -11,6 +11,9 @@
         <el-collapse-item title="边框" class="h-from" v-if="content.css.bd">
           <ui-border :value="content.css.bd" @change="updateCss" />
         </el-collapse-item>
+        <el-collapse-item title="字体" class="h-from" v-if="content.css.ft">
+          <ui-font :value="content.css.ft" @change="updateCss" />
+        </el-collapse-item>
       </el-collapse>
     </el-tab-pane>
   </el-tabs>
