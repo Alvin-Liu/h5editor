@@ -7,10 +7,8 @@
           :key="key"
           :label="fm"
           :value="key">
-          {{$log(fm)}}
         </el-option>
       </el-select>
-      {{$log(fms)}}
     </el-form-item>
     <el-form-item label="字号">
       <el-select v-model.number="ft.size" placeholder="请选择" @change="handleChange">
