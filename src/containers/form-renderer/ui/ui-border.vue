@@ -1,25 +1,22 @@
 <template>
-  <div class="item-group m-bd f-vama">
-    <div class="item">
-      <label>宽度:</label>
-      <input type="text" v-model="bd.width" @change="handleChange">
-    </div>
-    <div class="item">
-      <label>样式:</label>
-      <select name="border-style" v-model.number="bd.type" @change="handleChange">
-        <option
+  <el-form ref="form" :model="bd" label-width="40px">
+    <el-form-item label="宽度">
+      <el-input v-model.number="bd.width" type="number" placeholder="请输入" @change="handleChange"></el-input>
+    </el-form-item>
+    <el-form-item label="类型">
+      <el-select placeholder="请选择" v-model="bd.type" @change="handleChange">
+        <el-option
           v-for="(bs, key) in bss"
           :key="key"
-          :value="key">
-          {{ bs }}
-        </option>
-      </select>
-    </div>
-    <div class="item">
-      <label>颜色:</label>
-      <el-color-picker v-model="bd.color" @change="handleChange" size="mini" />
-    </div>
-  </div>
+          :label="bs"
+          :value="+key">
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="颜色">
+      <el-color-picker v-model="bd.color" @change="handleChange" />
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
@@ -47,6 +44,7 @@ export default {
   methods: {
     handleChange () {
       const bd = this.bd
+      console.log(bd)
       this.$emit('change', {
         key: 'bd',
         value: {

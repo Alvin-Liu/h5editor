@@ -1,7 +1,7 @@
 <template>
   <el-form ref="form" :model="ft" label-width="60px">
     <el-form-item label="字体">
-      <el-select v-model.number="ft.type" placeholder="请选择">
+      <el-select v-model.number="ft.type" placeholder="请选择" @change="handleChange">
         <el-option
           v-for="(fm, key) in fms"
           :key="key"
@@ -13,7 +13,7 @@
       {{$log(fms)}}
     </el-form-item>
     <el-form-item label="字号">
-      <el-select v-model.number="ft.size" placeholder="请选择">
+      <el-select v-model.number="ft.size" placeholder="请选择" @change="handleChange">
         <el-option
           v-for="(fs, key) in fss"
           :key="key"
@@ -49,8 +49,7 @@ export default {
       ft: {
         color: font.c,
         size: font.s,
-        type: font.t,
-        hover: font.h
+        type: font.t
       }
     }
   },
@@ -62,7 +61,6 @@ export default {
         value: {
           s: ft.size,
           t: ft.type,
-          h: ft.hover,
           c: ft.color
         }
       })

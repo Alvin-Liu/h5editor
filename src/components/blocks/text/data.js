@@ -29,7 +29,6 @@ export default () => {
       ft: {
         s: 1,
         t: 1,
-        h: '',
         c: '#333'
       },
       lh: 30,

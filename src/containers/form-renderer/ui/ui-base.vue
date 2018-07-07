@@ -38,7 +38,6 @@ export default {
   watch: {
     form: {
       handler (val, oldVal) {
-        console.log(val, oldVal)
         this.$emit('change', {
           key: 'base',
           value: val
