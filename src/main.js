@@ -14,6 +14,7 @@ import { isMobile, flexible } from '@/utils/index.js'
 Vue.use(ElementUI)
 
 Vue.prototype.$log = console.log.bind(console)
+Vue.prototype.$ELEMENT = { size: 'small' }
 
 Vue.filter('calcStyle', calcStyle)
 
