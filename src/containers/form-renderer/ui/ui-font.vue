@@ -11,12 +11,12 @@
       </el-select>
     </el-form-item>
     <el-form-item label="字号">
-      <el-select v-model.number="ft.size" placeholder="请选择" @change="handleChange">
+      <el-select v-model="ft.size" placeholder="请选择" @change="handleChange">
         <el-option
           v-for="(fs, key) in fss"
           :key="key"
           :label="fs"
-          :value="key">
+          :value="+key">
         </el-option>
       </el-select>
     </el-form-item>

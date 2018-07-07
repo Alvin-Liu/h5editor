@@ -24,7 +24,7 @@ export default {
     form: {
       handler (val, oldVal) {
         this.$emit('change', {
-          key: 'base',
+          key: 'bg',
           value: val
         })
       },
