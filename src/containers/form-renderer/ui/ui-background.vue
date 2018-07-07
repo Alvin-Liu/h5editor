@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'UIBase',
+  name: 'UIBackground',
   props: {
     value: {
       type: Object,
