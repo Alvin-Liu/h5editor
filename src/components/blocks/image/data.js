@@ -26,7 +26,9 @@ export default () => {
         t: 1,
         c: '#fff'
       },
-      bgc: '#fff'
+      bg: {
+        c: '#fff'
+      }
     }
   }
 }

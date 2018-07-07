@@ -32,7 +32,9 @@ export default () => {
         c: '#333'
       },
       lh: 30,
-      bgc: '#fff'
+      bg: {
+        c: '#fff'
+      }
     }
   }
 }
