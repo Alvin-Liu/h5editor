@@ -62,6 +62,9 @@ export default {
       &:nth-child(2n) {
         margin-left: 2%;
       }
+      > button {
+        width: 100%;
+      }
     }
   }
 </style>
