@@ -1,18 +1,21 @@
 <template>
   <el-tabs v-model="activeName">
     <el-tab-pane label="动画" name="anim" v-if="content.anim">
-      <ui-animate :value="content.anim" @change="updateAni" />
+      <ui-animate :value="content.anim" @change="updateAnimate" />
     </el-tab-pane>
     <el-tab-pane label="样式" name="css" v-if="content.css">
       <el-collapse accordion>
         <el-collapse-item title="尺寸与位置" class="h-from" v-if="content.css.base">
-          <ui-base :value="content.css.base" @change="updateCss" />
+          <ui-base :value="content.css.base" @change="updateStyle" />
         </el-collapse-item>
         <el-collapse-item title="边框" class="h-from" v-if="content.css.bd">
-          <ui-border :value="content.css.bd" @change="updateCss" />
+          <ui-border :value="content.css.bd" @change="updateStyle" />
         </el-collapse-item>
         <el-collapse-item title="字体" class="h-from" v-if="content.css.ft">
-          <ui-font :value="content.css.ft" @change="updateCss" />
+          <ui-font :value="content.css.ft" @change="updateStyle" />
+        </el-collapse-item>
+        <el-collapse-item title="背景色" class="h-from" v-if="content.css.bg">
+          <ui-background :value="content.css.bg" @change="updateStyle" />
         </el-collapse-item>
       </el-collapse>
     </el-tab-pane>
@@ -37,10 +40,10 @@ export default {
     }
   },
   methods: {
-    updateCssBg (value) {
-      this.updateCss({key: 'bgc', value: value})
+    updateStyleBg (value) {
+      this.updateStyle({key: 'bgc', value: value})
     },
-    updateCss ({ key, value }) {
+    updateStyle ({ key, value }) {
       this.update({
         type: 'css',
         value: {
@@ -48,7 +51,7 @@ export default {
         }
       })
     },
-    updateAni ({ key, value }) {
+    updateAnimate ({ key, value }) {
       this.update({
         type: 'anim',
         value: value
