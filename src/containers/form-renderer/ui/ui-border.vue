@@ -44,7 +44,6 @@ export default {
   methods: {
     handleChange () {
       const bd = this.bd
-      console.log(bd)
       this.$emit('change', {
         key: 'bd',
         value: {

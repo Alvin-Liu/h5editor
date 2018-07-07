@@ -18,7 +18,7 @@
         :x="comp.css.l || comp.css.base.l"
         :minw="10"
         :minh="10"
-        :angle="comp.css.rotate"
+        :angle="comp.css.rotate || comp.css.base.rotate"
         @activated="toggleCompid(comp.id)"
         @dragging="handleDragging"
         @resizing="handleResizing"
@@ -81,21 +81,27 @@ export default {
     },
     handleResizing (x, y, w, h) {
       this.updateStyle({
-        t: y,
-        l: x,
-        w: w,
-        h: h
+        base: {
+          t: y,
+          l: x,
+          w: w,
+          h: h
+        }
       })
     },
     handleDragging (x, y) {
       this.updateStyle({
-        t: y,
-        l: x
+        base: {
+          t: y,
+          l: x
+        }
       })
     },
     handleRotating (angle) {
       this.updateStyle({
-        rotate: angle
+        base: {
+          rotate: angle
+        }
       })
     }
   },
