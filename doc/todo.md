@@ -1,6 +1,8 @@
 ## todo list
 
-v 0.1.1
+### V 0.1.1
+
+功能：
 
 - 修改的render
 - 组件render
@@ -8,3 +10,8 @@ v 0.1.1
 - 规范样式
 - 规范命名
 - yapi
+
+bug:
+
+- 组件旋转
+- vue-drr 父组件更新props，同步更新
