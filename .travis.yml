@@ -1,0 +1,29 @@
+language: node_js
+
+node_js: 
+    - '6'
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install --registry=https://registry.npm.taobao.org
+
+before_script:
+
+script:
+  - npm run build
+
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "${U_NAME}"
+  - git config user.email "${U_EMAIL}"
+  - git add .
+  - git commit -m "update"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
+
+branches:
+  only:
+    - master
