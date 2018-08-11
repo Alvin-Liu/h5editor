@@ -4,7 +4,7 @@
 
 h5editor是一款可视化手机h5编辑器（微场景，主要上下全屏翻页，叫h5编辑器不是很准确，不过周围人都以为这样子的效果是h5的话，那它就是h5吧），它基于vue2、element-ui实现，主要功能模仿易企秀，目前实现的效果比较简单。
 
-在线预览地址：[h5editor](https://alvin-liu.github.io/h5editor/dist/ "DEMO")
+在线预览地址：[h5editor](https://alvin-liu.github.io/h5editor/ "DEMO")
 
 ## 效果截图
 
