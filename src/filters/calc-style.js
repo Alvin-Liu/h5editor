@@ -39,6 +39,8 @@ const getCssObj = (key, value) => {
           newCss[propName.value] = isMobile
             ? value[k] / 32 + 'rem'
             : value[k] + propName.unit
+        } else if (k === 'rotate') {
+          newCss['transform'] = `rotate(${value[k]}deg)`
         } else {
           newCss[propName] = value[k]
         }
