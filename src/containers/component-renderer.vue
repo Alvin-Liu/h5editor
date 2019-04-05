@@ -32,7 +32,11 @@ export default {
       if (this.isEdit) {
         return {
           ...css,
-          rotate: null
+          rotate: null,
+          base: {
+            ...css.base,
+            rotate: null
+          }
         }
       }
       return css
