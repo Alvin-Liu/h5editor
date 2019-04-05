@@ -2,7 +2,7 @@
   "name": "h5editor",
   "version": "0.1.0",
   "description": "仿易企秀类h5页面编辑工具",
-  "author": "alvin-liu <642451695@qq.com>",
+  "author": "alvin-liu <alvin.llm@foxmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
