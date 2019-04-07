@@ -19,14 +19,30 @@
         </el-collapse-item>
       </el-collapse>
     </el-tab-pane>
+    <el-tab-pane label="内容" name="props">
+      <keep-alive>
+        <component
+          v-if="hasComponentConfig && content.props"
+          :is="renderComponentConfigName"
+          :content="renderComponentConfigProps"
+          @update="updateContentProps"
+        />
+      </keep-alive>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
 import UiComponents from './ui/index.js'
+import ComponentConfig from '@/components/blocks/config.js'
+import { deepClone } from '@/utils/index.js'
 
 export default {
   name: 'formRenderer',
+  components: {
+    ...UiComponents,
+    ...ComponentConfig
+  },
   props: {
     content: {
       type: Object,
@@ -37,6 +53,17 @@ export default {
     return {
       activeCollapse: '1',
       activeName: 'css'
+    }
+  },
+  computed: {
+    renderComponentConfigName () {
+      return this.content.name && (this.content.name.toLowerCase() + 'Config')
+    },
+    renderComponentConfigProps () {
+      return deepClone(this.content.props)
+    },
+    hasComponentConfig () {
+      return ComponentConfig[this.renderComponentConfigName]
     }
   },
   methods: {
@@ -57,6 +84,14 @@ export default {
         value: value
       })
     },
+    updateContentProps (key, value) {
+      this.update({
+        type: 'props',
+        value: {
+          [key]: value
+        }
+      })
+    },
     update ({ type, value }) {
       this.$store.commit('EDIT_COMP', {
         type: type,
@@ -64,7 +99,6 @@ export default {
         value: value
       })
     }
-  },
-  components: UiComponents
+  }
 }
 </script>

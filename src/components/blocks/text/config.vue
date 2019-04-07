@@ -1,24 +1,24 @@
 <template>
-  <form-renderer :content="cm"></form-renderer>
+  <el-collapse accordion>
+    <el-collapse-item title="文字" class="h-from" v-if="content.text">
+      <el-input v-model="content.text" @input="handleChange" />
+    </el-collapse-item>
+  </el-collapse>
 </template>
 
 <script>
-import formRenderer from '@/containers/form-renderer'
 export default {
   name: 'textConfig',
   props: {
-    id: {
-      type: [String, Number],
+    content: {
+      type: Object,
       required: true
     }
   },
-  computed: {
-    cm () {
-      return this.$store.getters.getCompConfigByCompid(this.id)
+  methods: {
+    handleChange (val) {
+      this.$emit('update', 'text', val)
     }
-  },
-  components: {
-    formRenderer
   }
 }
 </script>
