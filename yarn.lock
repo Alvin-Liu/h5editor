@@ -6781,6 +6781,11 @@ vue-awesome-swiper@^3.0.6:
     object-assign "^4.1.1"
     swiper "^4.0.7"
 
+vue-context-menu@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/vue-context-menu/-/vue-context-menu-2.0.6.tgz#185107cd3ae51f25c53266a2751008fa7da4f34e"
+  integrity sha512-wTyyjWbrGq/Rc1iivHl9ryI0IcsodRgg46CAGCm6knADDsTj5qJzo2pPDfi6y2nQreg8llJC2lGGts88tMX1sQ==
+
 vue-drr@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/vue-drr/-/vue-drr-1.0.9.tgz#9532b4f963ba57541a6b7748c3814528c95bc8ab"

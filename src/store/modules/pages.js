@@ -115,6 +115,15 @@ const mutations = {
     if (curPage) {
       curPage.comps.push(compData)
     }
+  },
+  [types.REMOVE_COMP_FROM_PAGES] (state, compId) {
+    const targetPage = state.lists.find(page => state.curPageId === page.id)
+    if (targetPage) {
+      const index = targetPage.comps.findIndex(cm => cm.id === compId)
+      if (index > -1) {
+        targetPage.comps.splice(index, 1)
+      }
+    }
   }
 }
 

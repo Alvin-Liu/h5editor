@@ -28,6 +28,14 @@ const actions = {
       commit('ADD_COMP_TO_PAGES', newCompData)
       commit('ADD_COMP', newCompData)
     }
+  },
+  removeComp ({ commit, getters }, compId) {
+    const index = state.lists.findIndex(cm => cm.id === compId)
+    if (index > -1) {
+      commit(types.CLOSE_PROPS_PANEL)
+      commit(types.REMOVE_COMP_FROM_PAGES, compId)
+      commit(types.REMOVE_COMP, index)
+    }
   }
 }
 
@@ -54,6 +62,9 @@ const mutations = {
   },
   [types.ADD_COMP] (state, compData) {
     state.lists.push(compData)
+  },
+  [types.REMOVE_COMP] (state, index) {
+    state.lists.splice(index, 1)
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="c-image">
     <a href="#">
-      <img :src="cm.props.src">
+      <img :src="cm.props && cm.props.src">
     </a>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     cm () {
-      return this.$store.getters.getCompConfigByCompid(this.compid)
+      return this.$store.getters.getCompConfigByCompid(this.compid) || {}
     }
   }
 }

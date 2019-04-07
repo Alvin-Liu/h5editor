@@ -1,6 +1,7 @@
 // 页面组件
 export const ADD_COMP = 'ADD_COMP'
 export const EDIT_COMP = 'EDIT_COMP'
+export const REMOVE_COMP = 'REMOVE_COMP'
 export const TOGGLE_COMP = 'TOGGLE_COMP'
 
 // h5
@@ -15,6 +16,7 @@ export const REMOVE_PAGE = 'REMOVE_PAGE'
 export const EDIT_PAGE = 'EDIT_PAGE'
 export const TOGGLE_PAGE = 'TOGGLE_PAGE'
 export const ADD_COMP_TO_PAGES = 'ADD_COMP_TO_PAGES'
+export const REMOVE_COMP_FROM_PAGES = 'REMOVE_COMP_FROM_PAGES'
 
 // 属性编辑调整
 export const OPEN_PROPS_PANEL = 'OPEN_PROPS_PANEL'

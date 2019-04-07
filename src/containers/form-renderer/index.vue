@@ -60,7 +60,7 @@ export default {
       return this.content.name && (this.content.name.toLowerCase() + 'Config')
     },
     renderComponentConfigProps () {
-      return deepClone(this.content.props)
+      return this.content.props ? deepClone(this.content.props) : {}
     },
     hasComponentConfig () {
       return ComponentConfig[this.renderComponentConfigName]

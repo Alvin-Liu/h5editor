@@ -19,6 +19,7 @@
         :minw="10"
         :minh="10"
         :angle="comp.css.rotate || comp.css.base.rotate"
+        @contextmenu.prevent.native="$refs.ctxMenu.open"
         @activated="toggleCompid(comp.id)"
         @dragging="handleDragging"
         @resizing="handleResizing"
@@ -29,10 +30,15 @@
         <component-renderer :comp="comp" type="edit"></component-renderer>
       </vue-drr>
     </div>
+
+    <context-menu class="right-menu" ref="ctxMenu">
+      <el-dropdown-item @click.native="handleDelete">删除</el-dropdown-item>
+    </context-menu>
   </div>
 </template>
 
 <script>
+import ContextMenu from 'vue-context-menu'
 import vueDrr from '@/components/vue-drr'
 import ComponentRenderer from '@/containers/component-renderer'
 
@@ -40,6 +46,13 @@ const BASE_COMP_CONFIG_NAME = 'Config'
 
 export default {
   name: 'TheContainer',
+  data () {
+    return {
+      activeId: '',
+      contextMenuTarget: document.body,
+      contextMenuVisible: false
+    }
+  },
   computed: {
     pages () {
       return this.$store.getters.pages
@@ -71,6 +84,7 @@ export default {
       }
     },
     toggleCompid (id) {
+      this.activeId = id
       this.$store.commit('TOGGLE_COMP', id)
     },
     updateStyle (val) {
@@ -103,11 +117,16 @@ export default {
           rotate: angle
         }
       })
+    },
+    handleDelete () {
+      this.$store.dispatch('removeComp', this.activeId)
+      this.contextMenuVisible = false
     }
   },
   components: {
     vueDrr,
-    ComponentRenderer
+    ComponentRenderer,
+    ContextMenu
   }
 }
 </script>
