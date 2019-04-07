@@ -5,19 +5,14 @@
       <i class="f-fr el-icon-close u-btn-close" @click="$store.commit('CLOSE_PROPS_PANEL')"></i>
     </div>
     <div class="mn">
-      <keep-alive>
-        <component 
-          :is="propsPanel.name"
-          :id="propsPanel.id">
-        </component>
-      </keep-alive>
+      <form-renderer :content="cm"></form-renderer>
     </div>
   </ly-panel>
 </template>
 
 <script>
-import CompConfigs from '@/components/blocks/config.js'
 import PagePropConfig from '@/containers/page-prop-config.vue'
+import formRenderer from '@/containers/form-renderer'
 
 export default {
   name: 'PropManage',
@@ -27,12 +22,15 @@ export default {
     },
     curComp () {
       return this.$store.getters.curComp
+    },
+    cm () {
+      return this.$store.getters.getCompConfigByCompid(this.propsPanel.id) || {}
     }
   },
   components: {
-    ...CompConfigs,
     lyPanel: () => import('@/layouts/ly-panel'),
-    PagePropConfig
+    PagePropConfig,
+    formRenderer
   }
 }
 </script>
