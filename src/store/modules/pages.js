@@ -1,6 +1,6 @@
 import * as types from '../types'
 import { getNewPageId, getNewPage } from '../functions'
-import { deepClone } from '@/utils'
+import { deepClone, objectArray } from '@/utils'
 
 const state = {
   lists: [],
@@ -66,15 +66,13 @@ const mutations = {
     state.curPageId = pageId
   },
   [types.ADD_PAGE] (state, pageData) {
-    state.lists.push(pageData)
+    state.lists = objectArray.add(state.lists, pageData)
   },
   [types.INSERT_PAGE] (state, { page, pageId }) {
-    const index = state.lists.findIndex((page) => page.id === pageId)
-    if (index > -1) {
-      state.lists.splice(index + 1, 0, page)
-      state.curPageId = page.id
-    }
+    state.lists = objectArray.insertBefore(state.lists, page, item => item.id === pageId)
+    state.curPageId = page.id
   },
+  // todo:待处理
   [types.COPY_PAGE] (state, { prePageId, pageId }) {
     const lists = state.lists
     const index = lists.findIndex((page) => page.id === prePageId)
@@ -86,43 +84,29 @@ const mutations = {
     }
   },
   [types.REMOVE_PAGE] (state, pageId) {
-    const lists = state.lists
-    const index = lists.findIndex((page) => page.id === pageId)
+    const index = objectArray.findIndex(state.lists, (page) => page.id === pageId)
+    state.lists = objectArray.del(state.lists, pageId)
+
     if (index > -1) {
-      lists.splice(index, 1)
-      const nextActivePage = lists[index] || lists[index - 1]
+      const nextActivePage = state.lists[index] || state.lists[index - 1]
       state.curPageId = nextActivePage['id']
     }
   },
   [types.EDIT_PAGE] (state, { type, value, pageId }) {
-    let page = state.lists.find((pg) => pg.id === pageId || pg.id === state.curPageId)
-    if (page) {
-      let pageProp = page[type]
-      for (let key in value) {
-        if (pageProp[key] === undefined) {
-          continue
-        }
-        if (typeof value[key] === 'object') {
-          Object.assign(pageProp[key], value[key])
-        } else {
-          pageProp[key] = value[key]
-        }
-      }
-    }
+    state.lists = objectArray.update(state.lists, {
+      [type]: value
+    }, pg => pg.id === pageId || pg.id === state.curPageId)
   },
   [types.ADD_COMP_TO_PAGES] (state, compData) {
-    const curPage = state.lists.find((page) => page.id === state.curPageId)
-    if (curPage) {
-      curPage.comps.push(compData)
+    const target = objectArray.find(state.lists, page => page.id === state.curPageId)
+    if (target) {
+      target.comps = objectArray.add(target.comps, compData)
     }
   },
   [types.REMOVE_COMP_FROM_PAGES] (state, compId) {
-    const targetPage = state.lists.find(page => state.curPageId === page.id)
-    if (targetPage) {
-      const index = targetPage.comps.findIndex(cm => cm.id === compId)
-      if (index > -1) {
-        targetPage.comps.splice(index, 1)
-      }
+    const target = objectArray.find(state.lists, page => state.curPageId === page.id)
+    if (target) {
+      target.comps = objectArray.del(target.comps, compId)
     }
   }
 }

@@ -13,6 +13,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "element-ui": "^2.0.10",
+    "merge": "^1.2.1",
     "mockjs": "^1.0.1-beta3",
     "qrcode": "^1.2.0",
     "vue": "^2.5.2",

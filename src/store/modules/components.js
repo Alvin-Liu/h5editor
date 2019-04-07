@@ -1,5 +1,6 @@
 import * as types from '../types'
 import { getNewComp } from '../functions'
+import { objectArray } from '@/utils'
 
 const BASE_COMP_SUFFIX = 'Data'
 
@@ -34,7 +35,7 @@ const actions = {
     if (index > -1) {
       commit(types.CLOSE_PROPS_PANEL)
       commit(types.REMOVE_COMP_FROM_PAGES, compId)
-      commit(types.REMOVE_COMP, index)
+      commit(types.REMOVE_COMP, compId)
     }
   }
 }
@@ -43,6 +44,7 @@ const mutations = {
   [types.TOGGLE_COMP] (state, id) {
     state.curCompId = id
   },
+  // todo:该处利用对象的引用类型直接修改原对象，且使用方式很奇怪，待重构
   [types.EDIT_COMP] (state, { type, value, compid }) {
     const comp = state.lists.find((cp) => cp.id === compid || cp.id === state.curCompId)
     if (comp) {
@@ -61,10 +63,10 @@ const mutations = {
     }
   },
   [types.ADD_COMP] (state, compData) {
-    state.lists.push(compData)
+    state.lists = objectArray.add(state.lists, compData)
   },
-  [types.REMOVE_COMP] (state, index) {
-    state.lists.splice(index, 1)
+  [types.REMOVE_COMP] (state, compId) {
+    state.lists = objectArray.del(state.lists, compId)
   }
 }
 
