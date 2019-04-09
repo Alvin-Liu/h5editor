@@ -1,4 +1,12 @@
-import * as types from '../types'
+import {
+  ADD_COMP,
+  REMOVE_COMP,
+  EDIT_COMP,
+  TOGGLE_COMP,
+  ADD_COMP_TO_PAGES,
+  CLOSE_PROPS_PANEL,
+  REMOVE_COMP_FROM_PAGES
+} from '../types'
 import { getNewComp } from '../functions'
 import { objectArray } from '@/utils'
 
@@ -26,26 +34,26 @@ const actions = {
     const compData = getNewComp(name + BASE_COMP_SUFFIX)
     if (compData) {
       const newCompData = Object.assign(compData, { parentId: getters.curPageId })
-      commit(types.ADD_COMP_TO_PAGES, newCompData)
-      commit(types.ADD_COMP, newCompData)
+      commit(ADD_COMP_TO_PAGES, newCompData)
+      commit(ADD_COMP, newCompData)
     }
   },
   removeComp ({ commit, getters }, compId) {
     const index = state.lists.findIndex(cm => cm.id === compId)
     if (index > -1) {
-      commit(types.CLOSE_PROPS_PANEL)
-      commit(types.REMOVE_COMP_FROM_PAGES, compId)
-      commit(types.REMOVE_COMP, compId)
+      commit(CLOSE_PROPS_PANEL)
+      commit(REMOVE_COMP_FROM_PAGES, compId)
+      commit(REMOVE_COMP, compId)
     }
   }
 }
 
 const mutations = {
-  [types.TOGGLE_COMP] (state, id) {
+  [TOGGLE_COMP] (state, id) {
     state.curCompId = id
   },
   // todo:该处利用对象的引用类型直接修改原对象，且使用方式很奇怪，待重构
-  [types.EDIT_COMP] (state, { type, value, compid }) {
+  [EDIT_COMP] (state, { type, value, compid }) {
     const comp = state.lists.find((cp) => cp.id === compid || cp.id === state.curCompId)
     if (comp) {
       let compProp = comp[type]
@@ -62,10 +70,10 @@ const mutations = {
       }
     }
   },
-  [types.ADD_COMP] (state, compData) {
+  [ADD_COMP] (state, compData) {
     state.lists = objectArray.add(state.lists, compData)
   },
-  [types.REMOVE_COMP] (state, compId) {
+  [REMOVE_COMP] (state, compId) {
     state.lists = objectArray.del(state.lists, compId)
   }
 }

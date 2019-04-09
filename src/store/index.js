@@ -1,6 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as types from './types'
+import {
+  INIT_USER_DATA,
+  TOGGLE_PAGE,
+  SET_H5_CONFIG,
+  OPEN_PROPS_PANEL,
+  CLOSE_PROPS_PANEL,
+  SET_PICK_IMG,
+  SET_PICK_BGM,
+  SET_MOBILE
+} from './types'
 
 import pages from './modules/pages'
 import components from './modules/components'
@@ -68,9 +77,9 @@ export default new Vuex.Store({
         }
 
         const pages = curUserData.pages
-        commit(types.INIT_USER_DATA, curUserData)
+        commit(INIT_USER_DATA, curUserData)
         if (pages && pages.lists && pages.lists.length) {
-          commit(types.TOGGLE_PAGE, pages.lists[0]['id'])
+          commit(TOGGLE_PAGE, pages.lists[0]['id'])
         }
       } catch (e) {
         dispatch(initH5Editor)
@@ -79,11 +88,11 @@ export default new Vuex.Store({
     [initH5Editor] ({ dispatch, commit }) {
       dispatch('addNewPage')
         .then((id) => {
-          commit(types.TOGGLE_PAGE, id)
+          commit(TOGGLE_PAGE, id)
         })
     },
     setH5 ({ commit }, config) {
-      commit(types.SET_H5_CONFIG, config)
+      commit(SET_H5_CONFIG, config)
     },
     saveUserData ({ state }) {
       local.set(SAVE_KEY_NAME, JSON.stringify({
@@ -96,7 +105,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    [types.INIT_USER_DATA] (state, userData) {
+    [INIT_USER_DATA] (state, userData) {
       state.versior = userData.versior
       Object.assign(state.h5Config, userData.h5Config)
       state.pages.lists = state.pages.lists.concat(userData.pages.lists)
@@ -106,34 +115,34 @@ export default new Vuex.Store({
         }
       }, [])
     },
-    [types.OPEN_PROPS_PANEL] (state, { id, name }) {
+    [OPEN_PROPS_PANEL] (state, { id, name }) {
       state.propsPanel = {
         status: true,
         name: name,
         id: id
       }
     },
-    [types.CLOSE_PROPS_PANEL] (state) {
+    [CLOSE_PROPS_PANEL] (state) {
       state.propsPanel.status = false
     },
-    [types.SET_PICK_IMG] (state, payload) {
+    [SET_PICK_IMG] (state, payload) {
       if (typeof payload === 'boolean') {
         state.pickImg.status = payload
       } else {
         Object.assign(state.pickImg, payload)
       }
     },
-    [types.SET_PICK_BGM] (state, payload) {
+    [SET_PICK_BGM] (state, payload) {
       if (typeof payload === 'boolean') {
         state.pickBgm.status = payload
       } else {
         Object.assign(state.pickBgm, payload)
       }
     },
-    [types.SET_H5_CONFIG] (state, config) {
+    [SET_H5_CONFIG] (state, config) {
       Object.assign(state.h5Config, config)
     },
-    [types.SET_MOBILE] (state, mobileConfig) {
+    [SET_MOBILE] (state, mobileConfig) {
       Object.assign(state.mobile, mobileConfig)
     }
   },
