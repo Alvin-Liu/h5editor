@@ -65,9 +65,9 @@ export default new Vuex.Store({
           // 避免数据调整造成的错误，旧版本直接舍弃
           if (curUserData.versior && (curUserData.versior >= state.versior)) {
             const pages = curUserData.pages
-            commit('INIT_USER_DATA', curUserData)
+            commit(types.INIT_USER_DATA, curUserData)
             if (pages && pages.lists && pages.lists.length) {
-              commit('TOGGLE_PAGE', pages.lists[0]['id'])
+              commit(types.TOGGLE_PAGE, pages.lists[0]['id'])
             }
           } else {
             dispatch('initH5Editor')
@@ -83,11 +83,11 @@ export default new Vuex.Store({
     initH5Editor ({ dispatch, commit }) {
       dispatch('addNewPage')
         .then((id) => {
-          commit('TOGGLE_PAGE', id)
+          commit(types.TOGGLE_PAGE, id)
         })
     },
     setH5 ({ commit }, config) {
-      commit('SET_H5_CONFIG', config)
+      commit(types.SET_H5_CONFIG, config)
     },
     saveUserData ({ state }) {
       local.set(SAVE_KEY_NAME, JSON.stringify({

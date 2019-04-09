@@ -26,8 +26,8 @@ const actions = {
     const compData = getNewComp(name + BASE_COMP_SUFFIX)
     if (compData) {
       const newCompData = Object.assign(compData, { parentId: getters.curPageId })
-      commit('ADD_COMP_TO_PAGES', newCompData)
-      commit('ADD_COMP', newCompData)
+      commit(types.ADD_COMP_TO_PAGES, newCompData)
+      commit(types.ADD_COMP, newCompData)
     }
   },
   removeComp ({ commit, getters }, compId) {

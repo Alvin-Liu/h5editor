@@ -25,14 +25,14 @@ const actions = {
   addNewPage ({ commit }) {
     const page = getNewPage()
     if (page) {
-      commit('ADD_PAGE', page)
+      commit(types.ADD_PAGE, page)
     }
     return page.id
   },
   insertPage ({ commit }, prePageId) {
     const page = getNewPage()
     if (page) {
-      commit('INSERT_PAGE', {
+      commit(types.INSERT_PAGE, {
         page,
         pageId: prePageId
       })
@@ -42,7 +42,7 @@ const actions = {
   copyPage ({ commit }, pageId) {
     const id = getNewPageId()
     if (id) {
-      commit('COPY_PAGE', {
+      commit(types.COPY_PAGE, {
         prePageId: pageId,
         pageId: id
       })
@@ -50,11 +50,11 @@ const actions = {
     return id
   },
   removePage ({ commit }, pageId) {
-    commit('REMOVE_PAGE', pageId)
+    commit(types.REMOVE_PAGE, pageId)
     return pageId
   },
   openEditPage ({ commit }, pageId) {
-    commit('OPEN_PROPS_PANEL', {
+    commit(types.OPEN_PROPS_PANEL, {
       name: 'PagePropConfig',
       id: pageId
     })
