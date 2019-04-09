@@ -10,6 +10,7 @@ import { local } from '@/utils'
 Vue.use(Vuex)
 
 const SAVE_KEY_NAME = 'UserData'
+const pxRegExp = /\b(\d+(\.\d+)?)px\b/
 
 export default new Vuex.Store({
   state: {
@@ -44,39 +45,33 @@ export default new Vuex.Store({
   actions: {
     getUserData ({ state, commit, dispatch }) {
       const userData = localStorage.getItem(SAVE_KEY_NAME)
-      if (userData) {
-        try {
-          const mobile = state.mobile
-          let curUserData
-          if (mobile.isMobile) {
-            const pxRegExp = /\b(\d+(\.\d+)?)px\b/
-            curUserData = JSON.parse(userData, (key, value) => {
-              if (typeof value === 'string' && pxRegExp.test(value)) {
-                return value.replace(pxRegExp, ($0, $1) => {
-                  const val = parseFloat($1) / mobile.rem
-                  return val + 'rem'
-                })
-              }
-              return value
+      if (!userData) {
+        dispatch('initH5Editor')
+        return
+      }
+      try {
+        const mobile = state.mobile
+        const curUserData = JSON.parse(userData, (key, value) => {
+          if (mobile.isMobile && typeof value === 'string' && pxRegExp.test(value)) {
+            return value.replace(pxRegExp, ($0, $1) => {
+              const val = parseFloat($1) / mobile.rem
+              return val + 'rem'
             })
-          } else {
-            curUserData = JSON.parse(userData)
           }
-          // 避免数据调整造成的错误，旧版本直接舍弃
-          if (curUserData.versior && (curUserData.versior >= state.versior)) {
-            const pages = curUserData.pages
-            commit(types.INIT_USER_DATA, curUserData)
-            if (pages && pages.lists && pages.lists.length) {
-              commit(types.TOGGLE_PAGE, pages.lists[0]['id'])
-            }
-          } else {
-            dispatch('initH5Editor')
-          }
-        } catch (e) {
-          dispatch('initH5Editor')
-          console.error('获取数据失败:' + e.message)
+          return value
+        })
+
+        // 避免数据调整造成的错误，旧版本直接舍弃
+        if (!curUserData.versior || (curUserData.versior < state.versior)) {
+          throw new Error()
         }
-      } else {
+
+        const pages = curUserData.pages
+        commit(types.INIT_USER_DATA, curUserData)
+        if (pages && pages.lists && pages.lists.length) {
+          commit(types.TOGGLE_PAGE, pages.lists[0]['id'])
+        }
+      } catch (e) {
         dispatch('initH5Editor')
       }
     },
