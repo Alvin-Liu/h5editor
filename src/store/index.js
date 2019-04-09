@@ -11,6 +11,7 @@ Vue.use(Vuex)
 
 const SAVE_KEY_NAME = 'UserData'
 const pxRegExp = /\b(\d+(\.\d+)?)px\b/
+const initH5Editor = 'initH5Editor'
 
 export default new Vuex.Store({
   state: {
@@ -46,7 +47,7 @@ export default new Vuex.Store({
     getUserData ({ state, commit, dispatch }) {
       const userData = localStorage.getItem(SAVE_KEY_NAME)
       if (!userData) {
-        dispatch('initH5Editor')
+        dispatch(initH5Editor)
         return
       }
       try {
@@ -72,10 +73,10 @@ export default new Vuex.Store({
           commit(types.TOGGLE_PAGE, pages.lists[0]['id'])
         }
       } catch (e) {
-        dispatch('initH5Editor')
+        dispatch(initH5Editor)
       }
     },
-    initH5Editor ({ dispatch, commit }) {
+    [initH5Editor] ({ dispatch, commit }) {
       dispatch('addNewPage')
         .then((id) => {
           commit(types.TOGGLE_PAGE, id)
