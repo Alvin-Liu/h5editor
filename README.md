@@ -33,17 +33,33 @@ h5editor是一款可视化手机h5编辑器（微场景，主要上下全屏翻�
 
 1.克隆或者下载本项目：
 
-    $ git clone https://github.com/Alvin-Liu/h5editor.git
+```ssh
+$ git clone https://github.com/Alvin-Liu/h5editor.git
+```
 
 2.安装模块依赖：
 
-    npm install
+```ssh
+npm install
+```
 
 3.启动服务：
 
-    npm run dev
+```ssh
+npm run dev
+```
 
 4.打包代码：
 
-    npm run build
+```ssh
+npm run build
+```
+
+## 其他
+
+这只是一个临时兴起的项目，开始于刚接触vue没多久的某年某月某一天，如果有任何想法，都欢迎加微信沟通，加微信时请备注：h5editor。
+
+
+
+![](./doc/images/wechat.jpeg)
 
