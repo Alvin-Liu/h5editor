@@ -34,29 +34,23 @@ const getters = {
 const actions = {
   addNewPage ({ commit }) {
     const page = getNewPage()
-    if (page) {
-      commit(ADD_PAGE, page)
-    }
+    commit(ADD_PAGE, page)
     return page.id
   },
   insertPage ({ commit }, prePageId) {
     const page = getNewPage()
-    if (page) {
-      commit(INSERT_PAGE, {
-        page,
-        pageId: prePageId
-      })
-    }
+    commit(INSERT_PAGE, {
+      page,
+      pageId: prePageId
+    })
     return page.id
   },
   copyPage ({ commit }, pageId) {
     const id = getNewPageId()
-    if (id) {
-      commit(COPY_PAGE, {
-        prePageId: pageId,
-        pageId: id
-      })
-    }
+    commit(COPY_PAGE, {
+      prePageId: pageId,
+      pageId: id
+    })
     return id
   },
   removePage ({ commit }, pageId) {
