@@ -1,5 +1,5 @@
-import TextConfig from './text/config.vue'
+import textConfig from './text/config.vue'
 
 export default {
-  TextConfig
+  textConfig
 }
